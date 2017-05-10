@@ -1,7 +1,13 @@
 # blog
  this is my blog
-# 所有博文均以 GitHub issue 的形式发布，点此阅读：
+## 所有博文均以 GitHub issue 的形式发布，点此阅读：
 [点我点我](https://github.com/funnycoderstar/blog/issues)
-# 关于作者
+## 关于作者
 - [aboutMe](http://wangyaxing.deercv.com/)
-- [github](ttps://github.com/funnycoderstar)
+- [github](https://github.com/funnycoderstar)
+## 博文标签
+- [css](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=css)
+- [js](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=js)
+- [vue](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=vue)
+- [react](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=react)
+- [webpack](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=webpack)
