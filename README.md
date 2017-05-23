@@ -10,4 +10,6 @@
 - [js](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=js)
 - [vue](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=vue)
 - [react](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=react)
+- [react-native](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=react-native)
+- [node](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=node)
 - [webpack](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=webpack)
