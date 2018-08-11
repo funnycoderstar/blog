@@ -3,7 +3,7 @@
 ## 所有博文均以 GitHub issue 的形式发布，点此阅读：
 [点我点我](https://github.com/funnycoderstar/blog/issues)
 ## 关于作者
-- [aboutMe](http://wangyaxing.deercv.com/)
+- [aboutMe](http://wangyaxing.cn/)
 - [github](https://github.com/funnycoderstar)
 ## 博文标签
 - [css](https://github.com/funnycoderstar/blog/issues?utf8=%E2%9C%93&q=css)
