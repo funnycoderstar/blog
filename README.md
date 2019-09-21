@@ -18,5 +18,5 @@
 该博客用来记录平常开发中遇到的小问题小知识点（即零碎知识）
 
 关于前端其他知识系统的文章记录在以下地方
-- [前端学习总结](https://wangyaxing.gitbook.io/front-end-summary/)
-- [Leetcode(Javascript实现)](https://wangyaxing.gitbook.io/leetcode/)
+- [前端学习总结](https://wangyaxing.cn/summary/)
+- [Leetcode(Javascript实现)](https://wangyaxing.cn/leetcode/)
