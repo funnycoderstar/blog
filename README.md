@@ -62,5 +62,5 @@
    - [详解ES6中的class](https://github.com/funnycoderstar/blog/issues/111)
    - [将有序数组转换成二叉树](https://github.com/funnycoderstar/leetcode/issues/7) 
 - Day8：
-   - [详解ES7中的装饰器](https://github.com/funnycoderstar/blog/issues/112)
+   - [装饰器](https://github.com/funnycoderstar/blog/issues/112)
    - [路径总和](https://github.com/funnycoderstar/leetcode/issues/8)
