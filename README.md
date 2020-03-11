@@ -34,7 +34,7 @@
 每天一个知识点的原理解析+一道算法题
 
 ### 总结篇
-- week1：[第一周总结](https://github.com/funnycoderstar/blog/issues/105)
+- week1：[第一周总结](https://github.com/funnycoderstar/blog/issues/105)
 
 ### 目录篇
 
