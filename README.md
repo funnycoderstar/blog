@@ -64,3 +64,6 @@
 - Day8：
    - [装饰器](https://github.com/funnycoderstar/blog/issues/112)
    - [路径总和](https://github.com/funnycoderstar/leetcode/issues/8)
+- Day9：
+   - [简单通俗理解 vue3.0中的Proxy](https://github.com/funnycoderstar/blog/issues/113)
+   - [两句话中的不常见单词](https://github.com/funnycoderstar/leetcode/issues/19)
