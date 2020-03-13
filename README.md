@@ -67,3 +67,6 @@
 - Day9：
    - [简单通俗理解 vue3.0中的Proxy](https://github.com/funnycoderstar/blog/issues/113)
    - [两句话中的不常见单词](https://github.com/funnycoderstar/leetcode/issues/19)
+- Day10：
+   - [从JS底层理解var,const,let ](https://github.com/funnycoderstar/blog/issues/114)
+   - [有效的山脉数组](https://github.com/funnycoderstar/leetcode/issues/36)
