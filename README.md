@@ -35,7 +35,7 @@
 
 ### 总结篇
 - week1：[第一周总结](https://github.com/funnycoderstar/blog/issues/105)
-
+- week2：[第二周总结](https://github.com/funnycoderstar/blog/issues/116)
 ### 目录篇
 
 - Day1：
@@ -53,7 +53,6 @@
 - Day5：
     - [Generator函数](https://github.com/funnycoderstar/blog/issues/104)
     - [无重复字符的最长子串](https://github.com/funnycoderstar/leetcode/issues/32)
----
 
 - Day6：
     - [async原理解析](https://github.com/funnycoderstar/blog/issues/110)
@@ -70,3 +69,16 @@
 - Day10：
    - [从JS底层理解var,const,let ](https://github.com/funnycoderstar/blog/issues/114)
    - [有效的山脉数组](https://github.com/funnycoderstar/leetcode/issues/36)
+---
+
+- Day11：
+   - [三行代码实现 add(1)(2)(3)](https://github.com/funnycoderstar/blog/issues/117)
+   - [数组的交集](https://github.com/funnycoderstar/leetcode/issues/59)
+- Day12：
+   - [一文理解 this、call、apply、bind](https://github.com/funnycoderstar/blog/issues/118)
+   - [数组的交集II](https://github.com/funnycoderstar/leetcode/issues/60)
+- Day13：
+   - [(建议收藏) 常考算法面试题系列：树的遍历](https://github.com/funnycoderstar/leetcode/issues/61)
+- Day14：
+   - [赋值、浅拷贝、深拷贝区别](https://github.com/funnycoderstar/blog/issues/119)
+   - [构建乘积数组](https://github.com/funnycoderstar/leetcode/issues/62)
