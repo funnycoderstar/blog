@@ -31,7 +31,7 @@
 ![牧码的星星](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1583655092168.png)
 
 ## 100天前端进阶计划
-每天一个知识点的原理解析+一道算法题
+每天一个知识点的原理解析+一道算法题或者一篇一类问题(算法)的总结。
 
 ### 总结篇
 - week1：[第一周总结](https://github.com/funnycoderstar/blog/issues/105)
@@ -82,3 +82,13 @@
 - Day14：
    - [赋值、浅拷贝、深拷贝区别](https://github.com/funnycoderstar/blog/issues/119)
    - [构建乘积数组](https://github.com/funnycoderstar/leetcode/issues/62)
+- Day15：
+   - [如何启动一个本地静态服务器](https://github.com/funnycoderstar/blog/issues/72)
+   - [使数组唯一的最小增量](https://github.com/funnycoderstar/leetcode/issues/63)
+- Day16：
+   - [命令行参数](https://github.com/funnycoderstar/blog/issues/41)
+   - [反转链表](https://github.com/funnycoderstar/leetcode/issues/54)
+- Day17：
+   - [4个问题带你进阶React Hooks](https://github.com/funnycoderstar/blog/issues/120)
+- Day18：
+   - [常考算法面试题系列：链表的操作](https://github.com/funnycoderstar/leetcode/issues/64)
