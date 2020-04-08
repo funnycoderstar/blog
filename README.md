@@ -98,3 +98,7 @@
    - [nextTick的原理及运行机制](https://github.com/funnycoderstar/blog/issues/123)
 - Day21：
    - [Vue.use 源码分析](https://github.com/funnycoderstar/blog/issues/124)
+- Day22：
+   - [【面试题】CSS知识点整理(附答案) ](https://github.com/funnycoderstar/blog/issues/126)
+- Day23：
+   - [【面试题】HTTP知识点整理(附答案)](https://github.com/funnycoderstar/blog/issues/127)
