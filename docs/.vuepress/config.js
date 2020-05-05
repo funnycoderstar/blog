@@ -112,9 +112,8 @@ module.exports = {
                     title: '002',
                     collapsable: true,
                     children: [
-                        ['/algorithm/链表/合并两个有序链表', '合并两个有序链表'],
-                        ['/algorithm/链表/反转链表', '反转链表'],
-                        ['/algorithm/链表/回文链表', '回文链表'],
+                        ['/100day/002/setTimeout和requestAnimationFrame', 'setTimeout和requestAnimationFrame'],
+                        ['/100day/002/合并两个有序链表', '合并两个有序链表'],
                     ]   
                 },
             ],
