@@ -28,7 +28,7 @@
 - [简书](https://www.jianshu.com/u/92fec6da2d1a)
 - 微信公众号: 牧码的星星
 
-![牧码的星星](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1583655092168.png)
+![牧码的星星](http://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1583655092168.png)
 
 ## 100天前端进阶计划
 每天一个知识点的原理解析+一道算法题或者一篇一类问题(算法)的总结。
