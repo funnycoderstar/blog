@@ -8,3 +8,5 @@
 - [实现一个new](./实现一个new.md)
 - [实现instanceof](./实现instanceof.md)
 - [手写继承](./手写继承.md)
+- [实现一个async函数](./实现一个async函数.md)
+- [实现一个iterator](./实现一个iterator.md)

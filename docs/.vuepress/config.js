@@ -27,7 +27,7 @@ module.exports = {
                 text: '100天',
                 link: '/100day/'
             },
-            { text: 'Github', link: 'https://github.com/funnycoderstar/Front-end-summary' },
+            { text: 'Github', link: 'https://github.com/funnycoderstar/blog' },
         ],
         sidebar: {
             '/algorithm/': [
@@ -43,6 +43,7 @@ module.exports = {
                         ['/algorithm/树/翻转二叉树', '翻转二叉树'],
                         ['/algorithm/树/另一个树的子树', '另一个树的子树'],
                         ['/algorithm/树/验证二叉搜索树', '验证二叉搜索树'],
+                        ['/algorithm/树/将有序数组转换为二叉搜索树', '将有序数组转换为二叉搜索树'],
                     ]
                 },
                 {
@@ -71,10 +72,13 @@ module.exports = {
                     title: '动态规划',
                     collapsable: true,
                     children: [
+                        ['/algorithm/动态规划/斐波那契数列', '斐波那契数列'],
                         ['/algorithm/动态规划/买卖股票的最佳时机I', '买卖股票的最佳时机I'],
                         ['/algorithm/动态规划/买卖股票的最佳时机II', '买卖股票的最佳时机II'],
+                        ['/algorithm/动态规划/盛最多水的容器', '盛最多水的容器'],
                         ['/algorithm/动态规划/无重复字符的最长子串', '无重复字符的最长子串'],
                         ['/algorithm/动态规划/最大子序和', '最大子序和'],
+                        ['/algorithm/动态规划/最长公共前缀', '最长公共前缀'],
                         ['/algorithm/动态规划/最长回文子串', '最长回文子串'],
                     ]   
                 },
@@ -90,6 +94,8 @@ module.exports = {
                 ['/jsCode/实现一个new', '实现一个new'],
                 ['/jsCode/实现instanceof', '实现instanceof'],
                 ['/jsCode/手写继承', '手写继承'],
+                ['/jsCode/实现一个async函数', '实现一个async函数'],
+                ['/jsCode/实现一个iterator', '实现一个iterator'],
                 // '/jsCode/手动实现JSONP',
                 // '/jsCode/基于Promise的ajax封装',
                 // '/jsCode/单例模式',
@@ -99,12 +105,35 @@ module.exports = {
             '/interview/': [
                 ['/interview/', '面试题专题'],
                 {
+                    title: 'CSS',
+                    collapsable: true,
+                    children: [
+                        ['/interview/CSS/伪类和伪元素', '伪类和伪元素'],
+                        ['/interview/CSS/实现固定宽高比的div', '实现固定宽高比的div'],
+                        ['/interview/CSS/css解析规则', 'css解析规则'],
+                        ['/interview/CSS/CSS选择器', 'CSS选择器'],
+                        ['/interview/CSS/display: none和 visibility:hidden的区别', 'display: none和 visibility:hidden的区别'],
+                        ['/interview/CSS/flex.md', 'flex:1'],
+                    ]
+                },
+                {
                     title: 'React',
                     collapsable: true,
                     children: [
                         ['/interview/React/生命周期介绍', 'React生命周期'],
                         ['/interview/React/合成事件', 'React合成事件'],
                     ]
+                },
+                {
+                    title: 'HTTP',
+                    collapsable: true,
+                    children: [
+                        ['/interview/HTTP/HTTP1.x、HTTP2、HTTP3', 'HTTP1.x、HTTP2、HTTP3'],
+                        ['/interview/HTTP/HTTPS', 'HTTPS'],
+                        ['/interview/HTTP/三次握手，四次挥手', '三次握手，四次挥手'],
+                        ['/interview/HTTP/HTTP状态码', 'HTTP状态码'],
+                        ['/interview/HTTP/HTTP请求方法', 'HTTP请求方法'],
+                    ]   
                 },
                 {
                     title: 'Webpack',
@@ -115,6 +144,23 @@ module.exports = {
                         ['/interview/Webpack/优化构建速度', '优化构建速度'],
                         ['/interview/Webpack/优化代码体积', '优化代码体积'],
                     ]   
+                },
+                {
+                    title: '笔试题',
+                    collapsable: true,
+                    children: [
+                        // ['/interview/笔试题/1', '笔试题1'],
+                        // ['/interview/笔试题/2', '笔试题2'],
+                        // ['/interview/笔试题/3', '笔试题3'],
+                        // ['/interview/笔试题/4', '笔试题4'],
+                        // ['/interview/笔试题/5', '笔试题5'],
+                        // ['/interview/笔试题/6', '笔试题6'],
+                        ['/interview/笔试题/3', '笔试题1'],
+                        ['/interview/笔试题/4', '笔试题2'],
+                        ['/interview/笔试题/5', '笔试题3'],
+                        ['/interview/笔试题/6', '笔试题4'],
+
+                    ]
                 },
             ],
             '/100day/': [
