@@ -13,18 +13,11 @@
 - `CSS`预处理器
 - CSS 中的 `vertical-align` 有哪些值？它在什么情况下才能生效？
 - BFC(块格式化上下文)
--  常见布局的实现
+- 常见布局的实现
 
 ### HTTP
 - [HTTP1.x、HTTP2、HTTP3](./HTTP/HTTP1.x、HTTP2、HTTP3.md)
-   -  HTTP1.0 和HTTP1.1的一些区别
-   -  HTTP2.0和HTTP1.X相比的新特性
-   -  为什么 HTTP1.1 不能实现多路复用
-   -  多路复用和 keep alive区别
 - [HTTPS](./HTTP/HTTPS.md)
-    - HTTP和HTTPS的区别
-    - HTTPS握手过程
-    - HTTPS通过什么保证是安全的
 - [三次握手，四次挥手，为什么是三次和四次](./HTTP/三次握手，四次挥手，为什么是三次和四次)
 - [HTTP 的请求方法有哪些？GET和POST区别？](./HTTP/HTTP请求方法)
 - [HTTP状态码](./HTTP/HTTP状态码)

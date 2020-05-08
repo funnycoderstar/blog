@@ -66,6 +66,18 @@ module.exports = {
                         ['/algorithm/数组/构建乘积数组', '构建乘积数组'],
                         ['/algorithm/数组/使数组唯一的最小增量', '使数组唯一的最小增量'],
                         ['/algorithm/数组/扑克牌中的顺子', '扑克牌中的顺子'],
+                        ['/algorithm/数组/数组的交集', '数组的交集'],
+                        ['/algorithm/数组/数组的交集II', '数组的交集II'],
+                    ]   
+                },
+                {
+                    title: '数学',
+                    collapsable: true,
+                    children: [
+                        ['/algorithm/数学/计算质数', '计算质数'],
+                        ['/algorithm/数学/求众数', '求众数'],
+                        ['/algorithm/数学/只出现一次的数字', '只出现一次的数字'],
+                        ['/algorithm/数学/中位数', '中位数'],
                     ]   
                 },
                 {
@@ -76,6 +88,7 @@ module.exports = {
                         ['/algorithm/动态规划/买卖股票的最佳时机I', '买卖股票的最佳时机I'],
                         ['/algorithm/动态规划/买卖股票的最佳时机II', '买卖股票的最佳时机II'],
                         ['/algorithm/动态规划/盛最多水的容器', '盛最多水的容器'],
+                        ['/algorithm/动态规划/接雨水', '接雨水'],
                         ['/algorithm/动态规划/无重复字符的最长子串', '无重复字符的最长子串'],
                         ['/algorithm/动态规划/最大子序和', '最大子序和'],
                         ['/algorithm/动态规划/最长公共前缀', '最长公共前缀'],
@@ -87,6 +100,7 @@ module.exports = {
                 ['/jsCode/', '手写代码系列'],
                 ['/jsCode/防抖', '手写一个防抖'],
                 ['/jsCode/节流', '手写一个节流'],
+                ['/jsCode/浅比较和深比较', '浅比较和深比较'],
                 ['/jsCode/浅拷贝和深拷贝', '浅拷贝和深拷贝'],
                 ['/jsCode/数组乱序', '数组乱序'],
                 ['/jsCode/函数柯里化', '函数柯里化'],
@@ -96,6 +110,7 @@ module.exports = {
                 ['/jsCode/手写继承', '手写继承'],
                 ['/jsCode/实现一个async函数', '实现一个async函数'],
                 ['/jsCode/实现一个iterator', '实现一个iterator'],
+                ['/jsCode/实现一个vue自定义指令-懒加载', '实现一个vue自定义指令-懒加载'],
                 // '/jsCode/手动实现JSONP',
                 // '/jsCode/基于Promise的ajax封装',
                 // '/jsCode/单例模式',
