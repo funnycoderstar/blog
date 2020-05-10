@@ -56,6 +56,7 @@ module.exports = {
                         ['/algorithm/链表/倒数第K个节点', '倒数第K个节点'],
                         ['/algorithm/链表/找出链表的中间节点', '找出链表的中间节点'],
                         ['/algorithm/链表/两个链表的第一个公共节点', '两个链表的第一个公共节点'],
+                        ['/algorithm/链表/LRU', 'LRU缓存机制'],
                     ]   
                 },
                 {
@@ -68,6 +69,8 @@ module.exports = {
                         ['/algorithm/数组/扑克牌中的顺子', '扑克牌中的顺子'],
                         ['/algorithm/数组/数组的交集', '数组的交集'],
                         ['/algorithm/数组/数组的交集II', '数组的交集II'],
+                        ['/algorithm/数组/数组中的第K个最大元素', '数组中的第K个最大元素'],
+                        ['/algorithm/数组/全排列', '全排列'],
                     ]   
                 },
                 {
@@ -76,8 +79,9 @@ module.exports = {
                     children: [
                         ['/algorithm/数学/计算质数', '计算质数'],
                         ['/algorithm/数学/求众数', '求众数'],
-                        ['/algorithm/数学/只出现一次的数字', '只出现一次的数字'],
                         ['/algorithm/数学/中位数', '中位数'],
+                        ['/algorithm/数学/只出现一次的数字', '只出现一次的数字'],
+                        ['/algorithm/数学/有效的三角形个数', '有效的三角形个数'],
                     ]   
                 },
                 {
@@ -93,6 +97,7 @@ module.exports = {
                         ['/algorithm/动态规划/最大子序和', '最大子序和'],
                         ['/algorithm/动态规划/最长公共前缀', '最长公共前缀'],
                         ['/algorithm/动态规划/最长回文子串', '最长回文子串'],
+                        ['/algorithm/动态规划/打家劫舍', '打家劫舍'],
                     ]   
                 },
             ],
@@ -110,12 +115,16 @@ module.exports = {
                 ['/jsCode/手写继承', '手写继承'],
                 ['/jsCode/实现一个async函数', '实现一个async函数'],
                 ['/jsCode/实现一个iterator', '实现一个iterator'],
+                ['/jsCode/setTimeout实现setInterval', 'setTimeout实现setInterval'],
+                ['/jsCode/限制并发请求', '限制并发请求'],
+                ['/jsCode/简单实现一个Vue的双向绑定', '简单实现一个Vue的双向绑定'],
                 ['/jsCode/实现一个vue自定义指令-懒加载', '实现一个vue自定义指令-懒加载'],
+                ['/jsCode/实现一个轮播图', '实现一个轮播图'],
+                ['/jsCode/放大镜效果', '放大镜效果'],
                 // '/jsCode/手动实现JSONP',
                 // '/jsCode/基于Promise的ajax封装',
                 // '/jsCode/单例模式',
                 // '/jsCode/异步循环打印',
-                // '/jsCode/图片懒加载',
             ],
             '/interview/': [
                 ['/interview/', '面试题专题'],
