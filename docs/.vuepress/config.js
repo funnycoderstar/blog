@@ -70,8 +70,9 @@ module.exports = {
                         ['/algorithm/数组/数组的交集', '数组的交集'],
                         ['/algorithm/数组/数组的交集II', '数组的交集II'],
                         ['/algorithm/数组/数组中的第K个最大元素', '数组中的第K个最大元素'],
+                        ['/algorithm/数组/合并两个有序数组', '合并两个有序数组'],
                         ['/algorithm/数组/全排列', '全排列'],
-                    ]   
+                    ]
                 },
                 {
                     title: '数学',
@@ -132,11 +133,12 @@ module.exports = {
                     title: 'CSS',
                     collapsable: true,
                     children: [
+                        ['/interview/CSS/CSS基础知识点', 'CSS基础知识点'],
                         ['/interview/CSS/伪类和伪元素', '伪类和伪元素'],
                         ['/interview/CSS/实现固定宽高比的div', '实现固定宽高比的div'],
                         ['/interview/CSS/css解析规则', 'css解析规则'],
                         ['/interview/CSS/CSS选择器', 'CSS选择器'],
-                        ['/interview/CSS/display: none和 visibility:hidden的区别', 'display: none和 visibility:hidden的区别'],
+                        ['/interview/CSS/display:none和 visibility:hidden的区别', 'display: none和 visibility:hidden的区别'],
                         ['/interview/CSS/flex.md', 'flex:1'],
                     ]
                 },
