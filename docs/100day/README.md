@@ -5,7 +5,7 @@
 ### 目录篇
 
 - Day1：
-    - [require和import的区别](https://github.com/funnycoderstar/blog/issues/106)
+    - [require和import的区别](./001/import和require.md)
     - [买卖股票的最佳时机](https://github.com/funnycoderstar/leetcode/issues/57)
 - Day2：
     - [setTimeout和requestAnimationFrame](https://github.com/funnycoderstar/blog/issues/107)

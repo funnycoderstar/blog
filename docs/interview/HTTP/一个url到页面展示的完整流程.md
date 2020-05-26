@@ -69,6 +69,49 @@
 - 多进程可以充分利用现代 CPU 多核的优势。
 - 方便使用沙盒模型隔离插件等进程,提高浏览器的稳定性。
 
+## 如果CSS文件阻塞了，会阻塞DOM树的合成么，会阻塞页面的显示吗
+从服务器接收HTML页面的第一批数据时，DOM解析器就开始工作了，在解析的过程中，如果遇到了JS脚本，如下所示
+```js
+<html>
+    <body>
+     Hello world
+    <script>
+     document.write("--foo")
+    </script>
+</body>
+</html>
+```
+那么DOM解析器会优先执行JavaScript脚本，执行完成之后，再继续往下解析
+那么第二种情况复杂点了，我们内嵌的脚本替换成JS外部文件，如下所示
+```js
+<html>
+    <body>
+        Hello world
+        <script type="text/javascript" src="app.js"></script>
+    </body>
+</html>
+```
+这种情况下，当解析遇到JavaScript的时候，会先暂停DOM解析，并下载app.js文件，下载完成之后执行该JS文件，然后再往下解析DOM，这就是JavaScript文件为什么会阻塞DOM渲染。
+我们再看第三种情况，还是看下面代码
+```js
+<html>
+    <head>
+        <style type="text/css" src = "theme.css" />
+    </head>
+    <body>
+        <p>Hello world</p>
+        <script>
+            let e = document.getElementsByTagName('p')[0]
+            e.style.color = 'blue'
+        </script>
+    </body>
+</html>
+```
+当我在JavaScript中访问了某个元素的样式，那么这时候就需要等待这个样式被下载完成才继续往下执行，所以这种情况下，CSS也会阻塞DOM的解析。
+所以JS和CSS都有可能会阻塞DOM解析。
+
+
+
 ## 参考
 - [(1.6w字)浏览器灵魂之问，请问你能接得住几个？](https://juejin.im/post/5df5bcea6fb9a016091def69)
 - [从输入URL到页面加载的过程？如何由一道题完善自己的前端知识体系！](https://juejin.im/post/5aa5cb846fb9a028e25d2fb1)
