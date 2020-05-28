@@ -15,7 +15,10 @@
 - `CSS`预处理器
 - CSS 中的 `vertical-align` 有哪些值？它在什么情况下才能生效？
 - BFC(块格式化上下文)
-- 常见布局的实现
+- [常见布局的实现]()
+
+## JavaScript
+- [事件循环机制](./)
 
 ### HTTP
 - [HTTP1.x、HTTP2、HTTP3](./HTTP/HTTP1.x、HTTP2、HTTP3.md)
@@ -23,9 +26,6 @@
 - [三次握手，四次挥手，为什么是三次和四次](./HTTP/三次握手，四次挥手，为什么是三次和四次)
 - [HTTP 的请求方法有哪些？GET和POST区别？](./HTTP/HTTP请求方法)
 - [HTTP状态码](./HTTP/HTTP状态码)
-- webSocket
-- Ajax, Fetch, Axios
-- TCP和UDP的区别
 
 ### React
 
@@ -47,6 +47,8 @@
 - 受控组件和非受控组件区别
 - redux，redux 和 mobx 区别，为什么选择 redux
 - Vue和React的区别
+
+
 
 
 ### 强烈推荐的文章
