@@ -52,3 +52,13 @@
   - [最大子序和](./动态规划/最大子序和.md)
   - [最长公共前缀](./动态规划/最长公共前缀.md)
   - [最长回文子串](./动态规划/最长回文子串.md)
+  - [打家劫舍](./动态规划/打家劫舍.md)
+  - [打家劫舍 II](./动态规划/打家劫舍II.md)
+
+
+### 推荐好的书籍和博客
+- [fucking-algorithm](https://labuladong.gitbook.io/algo/)
+- [LeetCodeAnimation](https://github.com/MisterBooo/LeetCodeAnimation)
+- 学习JavaScript数据结构与算法（第2版)
+- 算法图解
+- 剑指offer

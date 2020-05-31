@@ -61,13 +61,14 @@
 
 </html>
 ```
-### 监听滚动根据offsetTop判断
+### 监听 scroll 事件判断元素是否进入视口
 
 ```js
 const imgs = [...document.getElementsByTagName('img')];
  let n = 0;
 
  lazyload();
+
  function throttle(fn, wait) {
     let timer = null;
     return function(...args) {
@@ -79,8 +80,7 @@ const imgs = [...document.getElementsByTagName('img')];
         }
     }
  }
- window.addEventListener('scroll', throttle(lazyload, 200));
- 
+  
  function lazyload() {
     var innerHeight = window.innerHeight; 
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -92,6 +92,8 @@ const imgs = [...document.getElementsByTagName('img')];
         
     }
  }
+ window.addEventListener('scroll', throttle(lazyload, 200));
+
 ```
 可能会存在下面几个问题：
 
@@ -103,10 +105,24 @@ const imgs = [...document.getElementsByTagName('img')];
 
 ### IntersectionObserver
 
+Intersection Observer API提供了一种异步观察目标元素与祖先元素或顶级文档viewport的交集中的变化的方法。
+
+创建一个 IntersectionObserver对象，并传入相应参数和回调用函数，该回调函数将会在目标(target)元素和根(root)元素的交集大小超过阈值(threshold)规定的大小时候被执行。
+
+```js
+var observer = new IntersectionObserver(callback, options);
+```
+IntersectionObserver是浏览器原生提供的构造函数，接受两个参数：callback是可见性变化时的回调函数（即目标元素出现在root选项指定的元素中可见时，回调函数将会被执行），option是配置对象（该参数可选）。
+
+返回的 `observer`是一个观察器实例。实例的 observe 方法可以指定观察哪个DOM节点。
+
+具体的用法可以 查看 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)
+
 ```js
 const imgs = [...document.getElementsByTagName('img')];
 // 当监听的元素进入可视范围内的会触发回调
  if(IntersectionObserver) {
+     // 创建一个 intersection observer
      let lazyImageObserver = new IntersectionObserver((entries, observer) => {
          entries.forEach((entry, index) => {
              let lazyImage = entry.target;
@@ -124,6 +140,7 @@ const imgs = [...document.getElementsByTagName('img')];
      }
  }
 ```
+
 
 - [codePen](https://codepen.io/funnycoderstar/pen/rNOdKGQ)
 
@@ -221,3 +238,5 @@ const imgs = [...document.getElementsByTagName('img')];
 
 - [延迟加载(Lazyload)三种实现方式](https://zhuanlan.zhihu.com/p/25455672)
 - [原生js实现图片懒加载（lazyLoad）](https://zhuanlan.zhihu.com/p/55311726)
+- [IntersectionObserver API 使用教程](http://www.ruanyifeng.com/blog/2016/11/intersectionobserver_api.html)
+- [MDN: Intersection Observer API](https://developer.mozilla.org/zh-CN/docs/Web/API/Intersection_Observer_API)
