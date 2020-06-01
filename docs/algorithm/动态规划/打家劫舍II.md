@@ -41,7 +41,6 @@ var rob = function(nums) {
     if(nums.length === 1) {
         return nums[0]
     }
-
     var rob1 = function(nums) {
         const len = nums.length;
         if(len === 0) {
