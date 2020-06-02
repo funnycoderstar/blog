@@ -72,3 +72,5 @@ TCP 会精准记录哪些数据发送了，哪些数据被对方接收了，哪�
 
 面向字节流。UDP 的数据传输是基于数据报的，一个一个地发，一个一个地收,这是因为仅仅只是继承了 IP 层的特性，而 TCP 为了维护状态，将一个个 IP 包变成了字节流。
 
+## 参考
+- [一文搞懂TCP与UDP的区别](https://www.cnblogs.com/fundebug/p/differences-of-tcp-and-udp.html)

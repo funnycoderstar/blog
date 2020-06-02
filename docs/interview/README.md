@@ -27,6 +27,7 @@
 - [三次握手，四次挥手，为什么是三次和四次](./HTTP/三次握手，四次挥手，为什么是三次和四次)
 - [HTTP 的请求方法有哪些？GET和POST区别？](./HTTP/HTTP请求方法)
 - [HTTP状态码](./HTTP/HTTP状态码)
+- [Web安全之XSS](./HTTP/Web安全之XSS)
 
 ### React
 
