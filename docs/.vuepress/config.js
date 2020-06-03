@@ -105,6 +105,8 @@ module.exports = {
                         ['/algorithm/动态规划/最长公共前缀', '最长公共前缀'],
                         ['/algorithm/动态规划/最长回文子串', '最长回文子串'],
                         ['/algorithm/动态规划/打家劫舍', '打家劫舍'],
+                        ['/algorithm/动态规划/打家劫舍II', '打家劫舍 II'],
+                        ['/algorithm/动态规划/打家劫舍III', '打家劫舍 III'],
                     ]   
                 },
             ],
