@@ -7,10 +7,17 @@
 
 ![CSRF攻击](https://upload-images.jianshu.io/upload_images/3297464-7d361cb4873ee1ae.png?imageMogr2/auto-orient/strip|imageView2/2/w/1092/format/webp)
 
-a.com
-登陆后种下cookie, 然后有个支付的页面，支付页面有个 诱导点击的按钮或者图片
+在`a.com`登陆后种下cookie, 然后有个支付的页面，支付页面有个诱导点击的按钮或者图片，第三方网站域名为 `b.com`，中的页面请求 `a.com`的接口，`b.com` 其实拿不到cookie，请求 `a.com`会把Cookie自动带上（因为Cookie种在 `a.com`域下）。这就是为什么在服务端要判断请求的来源，及限制跨域（只允许信任的域名访问），然后除了这些还有一些方法来防止  CSRF 攻击，下面会通过几个简单的例子来详细介绍 CSRF 攻击的表现及如何防御。
 
-b.com，中的页面请求 a.com的接口，b.com 其实拿不到cookie
+下面会通过一个例子来讲解 CSRF 攻击的表现是什么样子的。
+实现的例子：
+在前后端同域的情况下，前后端的域名都为 `http://127.0.0.1:3200`, 第三方网站的域名为 `http://127.0.0.1:3100`，钓鱼网站页面为 `http://127.0.0.1:3100/bad.html`。
+
+> 平时自己写例子中会用到下面这两个工具，非常方便好用：
+- [http-server](https://github.com/indexzero/http-server): 是基于node.js的HTTP 服务器，它最大的好处就是：可以使用任意一个目录成为服务器的目录，完全抛开后端的沉重工程，直接运行想要的js代码;
+- [nodemon](https://github.com/remy/nodemon): nodemon是一种工具，通过在检测到目录中的文件更改时自动重新启动节点应用程序来帮助开发基于node.js的应用程序
+
+前端页面： client.html
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -21,8 +28,8 @@ b.com，中的页面请求 a.com的接口，b.com 其实拿不到cookie
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CSRF-demo</title>
     <style>
-        .login-wrap {
-            height: 180px;
+        .wrap {
+            height: 500px;
             width: 300px;
             border: 1px solid #ccc;
             padding: 20px;
@@ -41,106 +48,130 @@ b.com，中的页面请求 a.com的接口，b.com 其实拿不到cookie
 </head>
 
 <body>
-    <div class="login-wrap">
-        <input type="text" placeholder="用户名" class="userName">
-        <br>
-        <input type="password" placeholder="密码" class="password">
-        <br>
-        <br>
-        <button class="btn">登陆</button>
+    <div class="wrap">
+        <div class="loginInfo">
+            <h3>登陆</h3>
+            <input type="text" placeholder="用户名" class="userName">
+            <br>
+            <input type="password" placeholder="密码" class="password">
+            <br>
+            <br>
+            <button class="btn">登陆</button>
+        </div>
+        
+        
         <div class="payInfo">
             <h3>转账信息</h3>
             <p >当前账户余额为 <span class="money">0</span>元</p>
-            <input type="text" placeholder="收款方" class="account">
+            <!-- <input type="text" placeholder="收款方" class="account"> -->
             <button class="pay">支付10元</button>
-            <!-- <a href="http://127.0.0.1:3100/bad.html">听说点击这个链接的人都赚大钱了，你还不来看一下么</a> -->
+            <br>
+            <br>
+            <a href="http://127.0.0.1:3100/bad.html" target="_blank">
+                听说点击这个链接的人都赚大钱了，你还不来看一下么
+            </a>
         </div>
     </div>
 </body>
 <script>
-    var btn = document.querySelector('.btn');
+    const btn = document.querySelector('.btn');
+    const loginInfo = document.querySelector('.loginInfo');
+    const payInfo = document.querySelector('.payInfo');
+    const money = document.querySelector('.money');
     let currentName = '';
+    // 第一次进入判断是否已经登陆
+    Fetch('http://127.0.0.1:3200/isLogin', 'POST', {})
+    .then((res) => {
+        if(res.data) {
+            payInfo.style.display = "block"
+            loginInfo.style.display = 'none';
+            Fetch('http://127.0.0.1:3200/pay', 'POST', {userName: currentName, money: 0})
+            .then((res) => {
+                money.innerHTML = res.data.money;
+            })
+        } else {
+            payInfo.style.display = "none"
+            loginInfo.style.display = 'block';
+        }
+        
+    })
+    // 点击登陆
     btn.onclick = function () {
         var userName = document.querySelector('.userName').value;
         currentName = userName;
         var password = document.querySelector('.password').value;
-        var money = document.querySelector('.money');
-        var payInfo = document.querySelector('.payInfo');
-        fetch('http://127.0.0.1:3200/login', {
-            method: 'POST', 
-            credentials: 'same-origin',
-            body: JSON.stringify({
-                userName,
-                password
-            }),
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors'
+        Fetch('http://127.0.0.1:3200/login', 'POST', {userName, password})
+        .then((res) => {
+            payInfo.style.display = "block";
+            loginInfo.style.display = 'none';
+            money.innerHTML = res.data.money;
         })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (res) {
-                // alert(res.msg);
-                payInfo.style.display = "block"
-                money.innerHTML = res.data.money;
-                
-            })
-            .catch(err => {
-                message.error(`本地测试错误${err.message}`);
-                console.error('本地测试错误', err);
-            });
     }
-    var pay = document.querySelector('.pay');
+    // 点击支付10元
+    const pay = document.querySelector('.pay');
     pay.onclick = function () {
-        var money = document.querySelector('.money');
-        fetch('http://127.0.0.1:3200/pay', {
-            credentials: 'include',
-            method: 'POST', 
-            body: JSON.stringify({
-                userName: currentName,
-                money: 10
-            }),
-            headers:{
-                'Content-Type': 'application/json'
-            },
-            mode: 'cors'
+        Fetch('http://127.0.0.1:3200/pay', 'POST', {userName: currentName, money: 10})
+        .then((res) => {
+            console.log(res);
+            money.innerHTML = res.data.money;
         })
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (res) {
-                alert(res.msg);
-                money.innerHTML = res.data.money;
-            })
-            .catch(err => {
-                message.error(`本地测试错误${err.message}`);
-                console.error('本地测试错误', err);
+    }
+    // 封装的请求方法
+    function Fetch(url, method = 'POST', data) {
+        return new Promise((resolve, reject) => {
+            let options = {};
+            if (method !== 'GET') {
+                options = {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                }
+            }
+            fetch(url, {
+                mode: 'cors', // no-cors, cors, *same-origin
+                method,
+                ...options,
+                credentials: 'include',
+            }).then((res) => {
+                return res.json();
+            }).then(res => {
+                resolve(res);
+            }).catch(err => {
+                reject(err);
             });
+        })
     }
     
 </script>
 
 </html>
 ```
-使用 `koa-static`使前后端在同一个域
 
+实现一个简单的支付功能：
+1. 会首先判断有没有登录，如果已经登陆过，就直接展示转账信息，未登录，展示登陆信息
+2. 登陆完成之后，会展示转账信息，点击支付，可以实现金额的扣减
+
+后端服务： server.js
 ```js
 const Koa = require("koa");
 const app = new Koa();
 const route = require('koa-route');
-var bodyParser = require('koa-bodyparser');
+const bodyParser = require('koa-bodyparser');
 const cors = require('@koa/cors');
 const KoaStatic = require('koa-static');
 
 let currentUserName = '';
 
-const secret = 'your_secret_string'; // 加密用的SECRET字符串，可随意更改
+// 使用  koa-static  使得前后端都在同一个服务下
 app.use(KoaStatic(__dirname));
+
 app.use(bodyParser()); // 处理post请求的参数
+
+// 初始金额为 1000
 let money = 1000;
 
+// 调用登陆的接口
 const login = ctx => {
     const req = ctx.request.body;
     const userName = req.userName;
@@ -150,7 +181,7 @@ const login = ctx => {
         'name', 
         userName,
         {
-          domain: '127.0.0.1',  // 写cookie所在的域名
+          domain: '127.0.0.1', // 写cookie所在的域名
           path: '/',       // 写cookie所在的路径
           maxAge: 10 * 60 * 1000, // cookie有效时长
           expires: new Date('2021-02-15'),  // cookie失效时间
@@ -165,29 +196,46 @@ const login = ctx => {
         msg: '登陆成功'
     };
 }
-
+// 调用支付的接口
 const pay = ctx => {
-    money = money - Number(ctx.request.body.money);
+    if(ctx.method === 'GET') {
+        money = money - Number(ctx.request.query.money);
+    } else {
+        money = money - Number(ctx.request.body.money);
+    }
     ctx.set('Access-Control-Allow-Credentials', 'true');
-    ctx.response.body = {
-        data: {
-            money,
-        },
-        msg: '支付成功'
-    };
-    // if(ctx.cookies.get('name')){
-    //     ctx.response.body = {
-    //         data: {
-    //             money: money - Number(ctx.request.body.money),
-    //         },
-    //         msg: '登陆成功'
-    //     };
-    // }else{
-    //     ctx.body = '未登录';
-    // }
+    // 根据有没有 cookie 来简单判断是否登录
+    if(ctx.cookies.get('name')){
+        ctx.response.body = {
+            data: {
+                money: money,
+            },
+            msg: '支付成功'
+        };
+    }else{
+        ctx.body = '未登录';
+    }
 }
+
+// 判断是否登陆
+const isLogin = ctx => {
+    ctx.set('Access-Control-Allow-Credentials', 'true');
+
+    if(ctx.cookies.get('name')){
+        ctx.response.body = {
+            data: true,
+            msg: '登陆成功'
+        };
+
+    }else{
+        ctx.response.body = {
+            data: false,
+            msg: '未登录'
+        };
+    }
+}
+// 处理 options 请求
 app.use((ctx, next)=> {
-    console.log(ctx.request.headers);
     const headers = ctx.request.headers;
     if(ctx.method === 'OPTIONS') {
         ctx.set('Access-Control-Allow-Origin', headers.origin);
@@ -202,21 +250,61 @@ app.use((ctx, next)=> {
 app.use(cors());
 app.use(route.post('/login', login));
 app.use(route.post('/pay', pay));
-
+app.use(route.get('/pay', pay));
+app.use(route.post('/isLogin', isLogin));
 
 app.listen(3200, () => {
     console.log('启动成功');
 });
+```
+执行 `nodemon server.js`，访问页面 `http://127.0.0.1:3200/client.html`
+
+![CSRF-demo](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1591259190301.gif)
+
+登陆完成之后，可以看到Cookie是种到  `http://127.0.0.1:3200` 这个域下面的。
+
+
+第三方页面 bad.html
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三方网站</title>
+</head>
+<body>
+    <div>
+        哈哈，小样儿，哪有赚大钱的方法，还是踏实努力工作吧！
+        <!-- form 表单的提交会伴随着跳转到action中指定 的url 链接，为了阻止这一行为，可以通过设置一个隐藏的iframe 页面，并将form 的target 属性指向这个iframe，当前页面iframe则不会刷新页面 -->
+        <form action="http://127.0.0.1:3200/pay" method="POST" class="form" target="targetIfr" style="display: none">
+            <input type="text" name="userName" value="xiaoming">
+            <input type="text" name="money" value="100">
+        </form>
+        <iframe name="targetIfr" style="display:none"></iframe>
+    </div>
+</body>
+<script>
+    document.querySelector('.form').submit();
+</script>
+</html>
 
 ```
+使用 HTTP-server 起一个 本地端口为 3100的服务，就可以通过 `http://127.0.0.1:3100/bad.html` 这个链接来访问，CSRF攻击需要做的就是在正常的页面上诱导用户点击链接进入这个页面
+![CSRF-DEMO](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1591260099190.gif)
+
+点击诱导链接，跳转到第三方的页面，第三方页面自动发了一个扣款的请求，所以在回到正常页面的时候，刷新，发现钱变少了。
+我们可以看到在第三方页面调用 `http://127.0.0.1:3200/pay` 这个接口的时候，Cookie自动加在了请求头上，这就是为什么 `http://127.0.0.1:3100/bad.html` 这个页面拿不到 Cookie，但是却能正常请求 `http://127.0.0.1:3200/pay` 这个接口的原因。
+
+
+CSRF攻击大致可以分为三种情况，自动发起Get请求， 自动发起POST请求，引导用户点击链接。下面会分别对上面例子进行简单的改造来说明这三种情况
 
 ### 自动发起Get请求
-
+在上面的 bad.html中，我们把代码改成下面这样
 ```js
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>黑客的站点：CSRF攻击演示</h1>
     <img src="http://127.0.0.1:3200/payMoney?money=1000">
   </body>
 </html>
@@ -225,6 +313,7 @@ app.listen(3200, () => {
 
 ### 自动发起POST请求
 
+上面例子中演示的就是这种情况。
 ```html
 <body>
     <div>
@@ -241,15 +330,16 @@ app.listen(3200, () => {
     document.querySelector('.form').submit();
 </script>
 ```
+上面这段代码中构建了一个隐藏的表单，表单的内容就是自动发起支付的接口请求。当用户打开该页面时，这个表单会被自动执行提交。当表单被提交之后，服务器就会执行转账操作。因此使用构建自动提交表单这种方式，就可以自动实现跨站点 POST 数据提交。
 
 ### 引导用户点击链接
 诱惑用户点击链接跳转到黑客自己的网站，示例代码如图所示
 ```js
 <a href="http://127.0.0.1:3100/bad.html">听说点击这个链接的人都赚大钱了，你还不来看一下么</a>
 ```
-用户点击这个地址就会跳到黑客的网站，黑客的网站可能会自动发送一些请求，比如上面提到的自动发起Get或Post请求。这样用户的账户余额就被转到黑客自己的账户下了
+用户点击这个地址就会跳到黑客的网站，黑客的网站可能会自动发送一些请求，比如上面提到的自动发起Get或Post请求。
 
-## 如何防止CSRF
+## 如何防御CSRF
 
 ### 利用cookie的SameSite
 SameSite有3个值： Strict, Lax和None
@@ -258,93 +348,43 @@ SameSite有3个值： Strict, Lax和None
 3. None。任何情况下都会发送 Cookie数据
 
 我们可以根据实际情况将一些关键的Cookie设置 Stirct或者 Lax模式，这样在跨站点请求的时候，这些关键的Cookie就不会被发送到服务器，从而使得CSRF攻击失败。
+
 ### 验证请求的来源点
+
 由于CSRF攻击大多来自第三方站点，可以在服务器端验证请求来源的站点，禁止第三方站点的请求。
 可以通过HTTP请求头中的 Referer和Origin属性。
 
-![HTTP请求头](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1591176981248.png)
+![HTTP请求头](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1591260224629.png)
+
+但是这种 Referer和Origin属性是可以被伪造的，碰上黑客高手，这种判断就是不安全的了。
 
 ### CSRF Token
 1. 最开始浏览器向服务器发起请求时，服务器生成一个CSRF Token。CSRF Token其实就是服务器生成的字符串，然后将该字符串种植到返回的页面中(可以通过Cookie)
 2. 浏览器之后再发起请求的时候，需要带上页面中的 `CSRF Token`（在request中要带上之前获取到的Token，比如 `x-csrf-token：xxxx`）, 然后服务器会验证该Token是否合法。第三方网站发出去的请求是无法获取到 `CSRF Token`的值的。
 
-## 同源策略
-页面安全问题的主要原因就是浏览器为同源策略开了两个后门：
-- 页面中可以任意引用第三方的资源
-- 通过CORS策略让XMLHttpRequest 和 Fetch 去跨域请求资源。
 
-为了解决这些问题，我们引入了 CSP 来限制页面任意引入外部资源，引入了 HttpOnly 机制来禁止 XMLHttpRequest 或者 Fetch 发送一些关键 Cookie，引入了 SameSite 和 Origin 来防止 CSRF 攻击。
+## 其他知识点补充
 
+### 1. 第三方cookie
+Cookie是种在服务端的域名下的，比如客户端域名是 a.com，服务端的域名是 b.com， Cookie是种在 b.com域名下的，在 Chrome的 Application下是看到的是 a.com下面的Cookie，是没有的，之后，在a.com下发送b.com的接口请求会自动带上Cookie(因为Cookie是种在b.com下的)
 
-如果没有同源策略，会是怎样？
-比如你打开了一个银行站点，然后又一不小心打开了一个恶意站点，如果没有安全措施，恶意站点就可以做很多事情：
-- 修改银行站点的 DOM、CSSOM 等信息；
-- 在银行站点内部插入 JavaScript 脚本；劫持用户登录的用户名和密码；
-- 读取银行站点的 Cookie、IndexDB 等数据；
-- 甚至还可以将这些信息上传至自己的服务器，这样就可以在你不知情的情况下伪造一些转账请求等信息。
+### 2. 简单请求和复杂请求
+复杂请求需要处理option请求。
 
-提交表单不受同源政策的限制。
-为了避免出现上面的问题，所以引入了同源策略。
-
-### 同源策略主要体现在DOM, Web数据和网络这三个层面
-1. DOM层面。同源策略限制了来自不同源的 JavaScript 脚本对当前 DOM 对象读和写的操作。
-window.opener  用于返回打开当前窗口的那个窗口的引用。
-- 如果当前窗口是由另一个窗口打开的,   window.opener 保留了那个窗口的引用
-- 如果当前窗口不是由其他窗口打开的, 则该属性返回 null
-
-2. Web数据层面
-
-同源策略限制了不同源的站点读取当前站点的 Cookie、IndexDB、LocalStorage 等数据。由于同源策略，我们依然无法通过第二个页面的 opener 来访问第一个页面中的 Cookie、IndexDB 或者 LocalStorage 等内容。
-3. 网络
-同源策略限制了通过 XMLHttpRequest 等方式将站点的数据发送给不同源的站点。
-
-同源策略会隔离不同源的 DOM、页面数据和网络通信，进而实现 Web 页面的安全性。
-
-### 浏览器出让了同源策略的哪些安全性。
-1. 页面中可以嵌入第三方资源
-同源策略要求，一个页面中所有资源都来自同一个源，也就是这个页面中所有的HTML文件，JavaScript文件，CSS文件，图片等都部署在同一台服务器。带来很多限制，比如将不同的资源部署到不同的 CDN 上时，CDN 上的资源就部署在另外一个域名上。
-
-CSP 的核心思想是让服务器决定浏览器能够加载哪些资源，让服务器决定浏览器是否能够执行内联 JavaScript 代码
-2. 跨域资源共享和跨文档消息机制
-引入了跨域资源共享（CORS），使用该机制可以进行跨域访问控制，从而使跨域数据传输得以安全进行。
-
-如果两个页面不是同源的，则无法相互操纵 DOM。不过在实际应用中，经常需要两个不同源的 DOM 之间进行通信，于是浏览器中又引入了跨文档消息机制，可以通过 window.postMessage 的 JavaScript 接口来和不同源的 DOM 进行通信。
-
-### Cookie
-Cookie 是服务器写入浏览器的一小段信息，只有同源的网页才能共享。但是，两个网页一级域名相同，只是二级域名不同，浏览器允许通过设置document.domain共享 Cookie。
-
-举例来说，A网页是http://w1.example.com/a.html，B网页是http://w2.example.com/b.html，那么只要设置相同的document.domain，两个网页就可以共享Cookie。
-
-```js
-document.domain = 'example.com';
-```
-现在，A网页通过脚本设置一个 Cookie。
-```js
-document.cookie = "test1=hello";
-```
-B网页就可以读到这个 Cookie。
-```js
-var allCookie = document.cookie;
-```
-注意，这种方法只适用于 Cookie 和 iframe 窗口，LocalStorage 和 IndexDB 无法通过这种方法，规避同源政策，而要使用下文介绍的PostMessage API。
-
-另外，服务器也可以在设置Cookie的时候，指定Cookie的所属域名为一级域名，比如.example.com。
-
-```js
-Set-Cookie: key=value; domain=.example.com; path=/
-```
-这样的话，二级域名和三级域名不用做任何设置，都可以读取这个Cookie。
+之前写过一篇特别详细的文章 [CORS原理及@koa/cors源码解析](https://github.com/funnycoderstar/blog/issues/73)，有空可以看一下。
 
 
-- [浏览器同源政策及其规避方法](https://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html)
+### 3. Fetch的 credentials 参数
+如果没有配置credential 这个参数，fetch是不会发送Cookie的
 
-很多知识点的关联
-1. 同源策略
-2. 跨域
-3. XSS
-4. CSRF
-5. cookie，cookie的sameSite, 同源和不同源的cookie获取
-6. 安全问题
+credential的参数如下
+- include：不论是不是跨域的请求，总是发送请求资源域在本地的Cookies、HTTP Basic anthentication等验证信息
+- same-origin：只有当URL与响应脚本同源才发送 cookies、 HTTP Basic authentication 等验证信息
+- omit： 从不发送cookies.
+
+平常写一些简单的例子，从很多细节问题上也能补充自己的一些知识盲点。
+
+
 ## 参考
 - [前端安全系列（一）：如何防止XSS攻击？](https://juejin.im/post/5bad9140e51d450e935c6d64)
 - [前端安全系列之二：如何防止CSRF攻击？](https://juejin.im/post/5bc009996fb9a05d0a055192)

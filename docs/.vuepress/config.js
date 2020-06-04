@@ -1,3 +1,59 @@
+// const menu = require('./menu');
+// const {linkList, JSList, VueList} = menu;
+
+function GeneratorMenu(pathPrefix, pathnameList) {
+    let result = [];
+    for(let i = 0; i < pathnameList.length; i++) {
+        result[i] = [`${pathPrefix}${pathnameList[i]}`, pathnameList[i]];
+    }
+    return result;
+}
+
+const linkList = GeneratorMenu('/algorithm/链表/', [
+    '合并两个有序链表',
+    '反转链表',
+    '回文链表',
+    '倒数第K个节点',
+    '找出链表的中间节点',
+    '两个链表的第一个公共节点',
+    'LRU缓存机制',
+]);
+const JSList = GeneratorMenu('/interview/JavaScript/', [
+    '从JS底层理解var,const,let',
+    '赋值、浅拷贝、深拷贝区别',
+    '函数柯里化',
+    '一文理解this&call&apply&bind',
+    'typeof和instanceof原理',
+    'setTimeout和requestAnimationFrame',
+    'for...of原理解析',
+    'Generator函数',
+    'async原理解析',
+    '详解ES6中的class',
+    '装饰器',
+    'JavaScript的几种创建对象的方式',
+    'JavaScript的几种继承方式',
+    '事件循环机制',
+]);
+
+const VueList = GeneratorMenu('/interview/Vue/', [
+    '简单通俗理解vue3.0中的Proxy',
+    'keep-alive的实现原理及LRU缓存策略',
+    'nextTick的原理及运行机制',
+]);
+const articles100List = GeneratorMenu('/100day/文章/', [
+    '命令行参数',
+    '如何启动一个本地静态服务器',
+]);
+const algorithm100List = GeneratorMenu('/100day/算法题/', [
+    '常考算法面试题系列-链表的操作',
+    '常考算法面试题系列-树的遍历',
+    '二叉树的最大和最小深度',
+    '路径总和(I、II、III)',
+    '买卖股票的最佳时机',
+    '相同的树、对称二叉树、翻转二叉树',
+    '路径总和(I、II、III)',
+]);
+
 module.exports = {
     base: '/blog/',
     title: '前端学习总结', 
@@ -53,15 +109,7 @@ module.exports = {
                 {
                     title: '链表',
                     collapsable: true,
-                    children: [
-                        ['/algorithm/链表/合并两个有序链表', '合并两个有序链表'],
-                        ['/algorithm/链表/反转链表', '反转链表'],
-                        ['/algorithm/链表/回文链表', '回文链表'],
-                        ['/algorithm/链表/倒数第K个节点', '倒数第K个节点'],
-                        ['/algorithm/链表/找出链表的中间节点', '找出链表的中间节点'],
-                        ['/algorithm/链表/两个链表的第一个公共节点', '两个链表的第一个公共节点'],
-                        ['/algorithm/链表/LRU', 'LRU缓存机制'],
-                    ]   
+                    children: linkList,
                 },
                 {
                     title: '数组',
@@ -130,10 +178,6 @@ module.exports = {
                 ['/jsCode/实现一个vue自定义指令-懒加载', '实现一个vue自定义指令-懒加载'],
                 ['/jsCode/实现一个轮播图', '实现一个轮播图'],
                 ['/jsCode/放大镜效果', '放大镜效果'],
-                // '/jsCode/手动实现JSONP',
-                // '/jsCode/基于Promise的ajax封装',
-                // '/jsCode/单例模式',
-                // '/jsCode/异步循环打印',
             ],
             '/interview/': [
                 ['/interview/', '面试题专题'],
@@ -150,6 +194,16 @@ module.exports = {
                         ['/interview/CSS/flex.md', 'flex:1'],
                         ['/interview/CSS/常见CSS布局的实现', '常见CSS布局的实现'],
                     ]
+                },
+                {
+                    title: 'JavaScript',
+                    collapsable: true,
+                    children: JSList,
+                },
+                {
+                    title: 'Vue',
+                    collapsable: true,
+                    children: VueList,
                 },
                 {
                     title: 'React',
@@ -211,159 +265,14 @@ module.exports = {
             '/100day/': [
                 ['/100day/', '100天计划专题'],
                 {
-                    title: '001',
+                    title: '文章',
                     collapsable: true,
-                    children: [
-                        ['/100day/001/import和require', 'import和require'],
-                        ['/100day/001/买卖股票的最佳时机', '买卖股票的最佳时机'],
-                    ]
+                    children: articles100List
                 },
                 {
-                    title: '002',
+                    title: '算法题',
                     collapsable: true,
-                    children: [
-                        ['/100day/002/setTimeout和requestAnimationFrame', 'setTimeout和requestAnimationFrame'],
-                        ['/100day/002/合并两个有序链表', '合并两个有序链表'],
-                    ]   
-                },
-                {
-                    title: '003',
-                    collapsable: true,
-                    children: [
-                        ['/100day/003/typeof和instanceof原理', 'typeof和 instanceof 原理'],
-                        ['/100day/003/最大子序和', '最大子序和'],
-                    ]   
-                },
-                {
-                    title: '004',
-                    collapsable: true,
-                    children: [
-                        ['/100day/004/for...of原理解析', 'for of 的原理解析'],
-                        ['/100day/004/扑克牌中的顺子', '扑克牌中的顺子'],
-                    ]   
-                },
-                {
-                    title: '005',
-                    collapsable: true,
-                    children: [
-                        ['/100day/005/Generator函数', 'Generator函数'],
-                        ['/100day/005/无重复字符的最长子串', '无重复字符的最长子串'],
-                    ]   
-                },
-                {
-                    title: '006',
-                    collapsable: true,
-                    children: [
-                        ['/100day/006/async原理解析', 'async原理解析'],
-                        ['/100day/006/搜索二维矩阵II', '搜索二维矩阵II'],
-                    ]   
-                },
-                {
-                    title: '007',
-                    collapsable: true,
-                    children: [
-                        ['/100day/007/详解ES6中的class', '详解ES6中的class'],
-                        ['/100day/007/将有序数组转换成二叉树', '将有序数组转换成二叉树'],
-                    ]   
-                },
-                {
-                    title: '008',
-                    collapsable: true,
-                    children: [
-                        ['/100day/008/装饰器', '装饰器'],
-                        ['/100day/008/路径总和', '路径总和'],
-                    ]   
-                },
-                {
-                    title: '009',
-                    collapsable: true,
-                    children: [
-                        ['/100day/009/简单通俗理解vue3.0中的Proxy', '简单通俗理解 vue3.0中的Proxy'],
-                        ['/100day/009/两句话中的不常见单词', '两句话中的不常见单词'],
-                    ]   
-                },
-                {
-                    title: '010',
-                    collapsable: true,
-                    children: [
-                        ['/100day/010/从JS底层理解var,const,let', '从JS底层理解var,const,let'],
-                        ['/100day/010/有效的山脉数组', '有效的山脉数组'],
-                    ]   
-                },
-                {
-                    title: '011',
-                    collapsable: true,
-                    children: [
-                        ['/100day/011/三行代码实现add(1)(2)(3)', '三行代码实现 add(1)(2)(3)'],
-                        ['/100day/011/数组的交集', '数组的交集'],
-                    ]   
-                },
-                {
-                    title: '012',
-                    collapsable: true,
-                    children: [
-                        ['/100day/012/一文理解this&call&apply&bind', '一文理解 this、call、apply、bind'],
-                        ['/100day/012/数组的交集II', '数组的交集II'],
-                    ]   
-                },
-                {
-                    title: '013',
-                    collapsable: true,
-                    children: [
-                        ['/100day/013/常考算法面试题系列-树的遍历', '常考算法面试题系列：树的遍历'],
-                    ]   
-                },
-                {
-                    title: '014',
-                    collapsable: true,
-                    children: [
-                        ['/100day/014/赋值、浅拷贝、深拷贝区别', '赋值、浅拷贝、深拷贝区别'],
-                        ['/100day/014/构建乘积数组', '构建乘积数组'],
-                    ]
-                },
-                {
-                    title: '015',
-                    collapsable: true,
-                    children: [
-                        ['/100day/015/如何启动一个本地静态服务器', '如何启动一个本地静态服务器'],
-                        ['/100day/015/使数组唯一的最小增量', '使数组唯一的最小增量'],
-                    ]
-                },
-                {
-                    title: '016',
-                    collapsable: true,
-                    children: [
-                        ['/100day/016/命令行参数', '命令行参数'],
-                        ['/100day/016/反转链表', '反转链表'],
-                    ]
-                },
-                {
-                    title: '017',
-                    collapsable: true,
-                    children: [
-                        ['/100day/017/4个问题带你进阶ReactHooks', '4个问题带你进阶React Hooks'],
-                    ]
-                },
-                {
-                    title: '018',
-                    collapsable: true,
-                    children: [
-                        ['/100day/018/常考算法面试题系列-链表的操作', '常考算法面试题系列：链表的操作'],
-                    ]
-                },
-                {
-                    title: '019',
-                    collapsable: true,
-                    children: [
-                        ['/100day/019/keep-alive的实现原理及LRU缓存策略', 'keep-alive的实现原理及LRU缓存策略'],
-                    ]
-                },
-                {
-                    title: '020',
-                    collapsable: true,
-                    children: [
-                        ['/100day/020/nextTick的原理及运行机制', 'nextTick的原理及运行机制'],
-                    ]
+                    children: algorithm100List
                 },
             ],
         }
