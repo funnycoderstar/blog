@@ -54,6 +54,37 @@ const algorithm100List = GeneratorMenu('/100day/算法题/', [
     '路径总和(I、II、III)',
 ]);
 
+const ArrayList = GeneratorMenu('/algorithm/数组/', [
+    '打乱数组',
+    '构建乘积数组',
+    '使数组唯一的最小增量',
+    '扑克牌中的顺子',
+    '数组的交集',
+    '数组的交集II',
+    '数组中的第K个最大元素',
+    '合并两个有序数组',
+    '全排列',
+    '螺旋矩阵',
+    '螺旋矩阵II',
+    '三数之和',
+    '最接近的三数之和',
+]);
+const TreeList = GeneratorMenu('/algorithm/树/', [
+    '树的遍历',
+    '路径总和',
+    '相同的树',
+    '对称二叉树',
+    '翻转二叉树',
+    '另一个树的子树',
+    '验证二叉搜索树',
+    '二叉树的最小深度',
+    '平衡二叉树',
+    '将有序数组转换为二叉搜索树',
+    '二叉搜索树迭代器',
+    '二叉搜索树的最近公共祖先',
+    '二叉树的最近公共祖先',
+]);
+
 module.exports = {
     base: '/blog/',
     title: '前端学习总结', 
@@ -91,22 +122,7 @@ module.exports = {
                 {
                     title: '树',
                     collapsable: true,
-                    children: [
-                        ['/algorithm/树/树的遍历', '树的遍历(DFS和BFS)'],
-                        ['/algorithm/树/路径总和', '路径总和(I、II、III)'],
-                        ['/algorithm/树/相同的树', '相同的树'],
-                        ['/algorithm/树/对称二叉树', '对称二叉树'],
-                        ['/algorithm/树/翻转二叉树', '翻转二叉树'],
-                        ['/algorithm/树/另一个树的子树', '另一个树的子树'],
-                        ['/algorithm/树/验证二叉搜索树', '验证二叉搜索树'],
-                        ['/algorithm/树/二叉树的最大深度', '二叉树的最大深度'],
-                        ['/algorithm/树/二叉树的最小深度', '二叉树的最小深度'],
-                        ['/algorithm/树/平衡二叉树', '平衡二叉树'],
-                        ['/algorithm/树/将有序数组转换为二叉搜索树', '将有序数组转换为二叉搜索树'],
-                        ['/algorithm/树/二叉搜索树迭代器', '二叉搜索树迭代器'],
-                        ['/algorithm/树/二叉搜索树的最近公共祖先', '二叉搜索树的最近公共祖先'],
-                        ['/algorithm/树/二叉树的最近公共祖先', '二叉树的最近公共祖先'],
-                    ]
+                    children: TreeList,
                 },
                 {
                     title: '链表',
@@ -116,19 +132,7 @@ module.exports = {
                 {
                     title: '数组',
                     collapsable: true,
-                    children: [
-                        ['/algorithm/数组/打乱数组', '打乱数组'],
-                        ['/algorithm/数组/构建乘积数组', '构建乘积数组'],
-                        ['/algorithm/数组/使数组唯一的最小增量', '使数组唯一的最小增量'],
-                        ['/algorithm/数组/扑克牌中的顺子', '扑克牌中的顺子'],
-                        ['/algorithm/数组/数组的交集', '数组的交集'],
-                        ['/algorithm/数组/数组的交集II', '数组的交集II'],
-                        ['/algorithm/数组/数组中的第K个最大元素', '数组中的第K个最大元素'],
-                        ['/algorithm/数组/合并两个有序数组', '合并两个有序数组'],
-                        ['/algorithm/数组/全排列', '全排列'],
-                        ['/algorithm/数组/螺旋矩阵', '螺旋矩阵'],
-                        ['/algorithm/数组/螺旋矩阵II', '螺旋矩阵II'],
-                    ]
+                    children: ArrayList,
                 },
                 {
                     title: '数学',
