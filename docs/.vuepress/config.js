@@ -67,7 +67,7 @@ const ArrayList = GeneratorMenu('/algorithm/数组/', [
     '螺旋矩阵',
     '螺旋矩阵II',
     '三数之和',
-    '最接近的三数之和',
+    '更接近的三数之和',
 ]);
 const TreeList = GeneratorMenu('/algorithm/树/', [
     '树的遍历',
