@@ -265,6 +265,7 @@ module.exports = {
                     collapsable: true,
                     children: [
                         ['/interview/面经/2017', '2017年面试总结'],
+                        ['/interview/面经/2020-面试', '2020年面试总结'],
                     ]
                 },
             ],
