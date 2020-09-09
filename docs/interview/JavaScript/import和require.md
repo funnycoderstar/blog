@@ -543,6 +543,15 @@ ReferenceError: foo is not defined
 
 让我们一行行来看，ES6 循环加载是怎么处理的。首先，执行a.mjs以后，引擎发现它加载了b.mjs，因此会优先执行b.mjs，然后再执行a.mjs。接着，执行b.mjs的时候，已知它从a.mjs输入了foo接口，这时不会去执行a.mjs，而是认为这个接口已经存在了，继续往下执行。执行到第三行console.log(foo)的时候，才发现这个接口根本没定义，因此报错。
 
+```js
+// a.mjs
+import {bar} from './b.mjs';
+console.log('a.mjs');
+console.log(bar);
+function foo() {return 'foo'};
+export {foo};
+```
+
 这时再执行a.mjs就可以得到预期结果。
 ```js
 $ node --experimental-modules a.mjs
