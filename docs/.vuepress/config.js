@@ -3,7 +3,7 @@
 
 function GeneratorMenu(pathPrefix, pathnameList) {
     let result = [];
-    for(let i = 0; i < pathnameList.length; i++) {
+    for (let i = 0; i < pathnameList.length; i++) {
         result[i] = [`${pathPrefix}${pathnameList[i]}`, pathnameList[i]];
     }
     return result;
@@ -77,6 +77,7 @@ const TreeList = GeneratorMenu('/algorithm/树/', [
     '翻转二叉树',
     '另一个树的子树',
     '验证二叉搜索树',
+    '二叉树的最大深度',
     '二叉树的最小深度',
     '平衡二叉树',
     '将有序数组转换为二叉搜索树',
@@ -87,32 +88,26 @@ const TreeList = GeneratorMenu('/algorithm/树/', [
 
 module.exports = {
     base: '/blog/',
-    title: '前端学习总结', 
+    title: '前端学习总结',
     description: '前端学习总结',
-    head: [
-        ['link', { rel: 'icon', href: 'https://cdn.wangyaxing.cn/icon-128x128.png' }],
-    ],
+    head: [['link', { rel: 'icon', href: 'https://cdn.wangyaxing.cn/icon-128x128.png' }]],
     themeConfig: {
         sidebarDepth: 2,
         lastUpdated: 'Last Updated',
         nav: [
-            { 
-                text: '首页', 
-                link: '/'
+            {
+                text: '首页',
+                link: '/',
             },
-            { 
+            {
                 text: '算法',
-                link: '/algorithm/'
+                link: '/algorithm/',
             },
-            {  text: '手写代码', 
-               link: '/jsCode/'
-            },
-            {  text: '面试题', 
-               link: '/interview/'
-            },
-            { 
+            { text: '手写代码', link: '/jsCode/' },
+            { text: '面试题', link: '/interview/' },
+            {
                 text: '100天',
-                link: '/100day/'
+                link: '/100day/',
             },
             { text: 'Github', link: 'https://github.com/funnycoderstar/blog' },
         ],
@@ -143,7 +138,7 @@ module.exports = {
                         ['/algorithm/数学/中位数', '中位数'],
                         ['/algorithm/数学/只出现一次的数字', '只出现一次的数字'],
                         ['/algorithm/数学/有效的三角形个数', '有效的三角形个数'],
-                    ]   
+                    ],
                 },
                 {
                     title: '动态规划',
@@ -161,7 +156,7 @@ module.exports = {
                         ['/algorithm/动态规划/打家劫舍', '打家劫舍'],
                         ['/algorithm/动态规划/打家劫舍II', '打家劫舍 II'],
                         ['/algorithm/动态规划/打家劫舍III', '打家劫舍 III'],
-                    ]   
+                    ],
                 },
             ],
             '/jsCode/': [
@@ -196,10 +191,13 @@ module.exports = {
                         ['/interview/CSS/实现固定宽高比的div', '实现固定宽高比的div'],
                         ['/interview/CSS/css解析规则', 'css解析规则'],
                         ['/interview/CSS/CSS选择器', 'CSS选择器'],
-                        ['/interview/CSS/display:none和visibility:hidden的区别', 'display: none和 visibility:hidden的区别'],
+                        [
+                            '/interview/CSS/display:none和visibility:hidden的区别',
+                            'display: none和 visibility:hidden的区别',
+                        ],
                         ['/interview/CSS/flex.md', 'flex:1'],
                         ['/interview/CSS/常见CSS布局的实现', '常见CSS布局的实现'],
-                    ]
+                    ],
                 },
                 {
                     title: 'JavaScript',
@@ -218,7 +216,7 @@ module.exports = {
                         ['/interview/React/生命周期介绍', 'React生命周期'],
                         ['/interview/React/合成事件', 'React合成事件'],
                         ['/interview/React/自定义hook', '自定义hook'],
-                    ]
+                    ],
                 },
                 {
                     title: 'HTTP',
@@ -229,9 +227,12 @@ module.exports = {
                         ['/interview/HTTP/三次握手，四次挥手', '三次握手，四次挥手'],
                         ['/interview/HTTP/HTTP状态码', 'HTTP状态码'],
                         ['/interview/HTTP/HTTP请求方法', 'HTTP请求方法'],
-                        ['/interview/HTTP/一个url到页面展示的完整流程', '一个url到页面展示的完整流程'],
+                        [
+                            '/interview/HTTP/一个url到页面展示的完整流程',
+                            '一个url到页面展示的完整流程',
+                        ],
                         ['/interview/HTTP/TCP和UDP', 'TCP和UDP'],
-                    ]   
+                    ],
                 },
                 {
                     title: 'Webpack',
@@ -241,7 +242,7 @@ module.exports = {
                         ['/interview/Webpack/webpack热更新原理', 'webpack热更新原理'],
                         ['/interview/Webpack/优化构建速度', '优化构建速度'],
                         ['/interview/Webpack/优化代码体积', '优化代码体积'],
-                    ]   
+                    ],
                 },
                 {
                     title: '笔试题',
@@ -257,8 +258,7 @@ module.exports = {
                         ['/interview/笔试题/4', '笔试题2'],
                         ['/interview/笔试题/5', '笔试题3'],
                         ['/interview/笔试题/6', '笔试题4'],
-
-                    ]
+                    ],
                 },
                 {
                     title: '面经分享',
@@ -266,7 +266,7 @@ module.exports = {
                     children: [
                         ['/interview/面经/2017', '2017年面试总结'],
                         ['/interview/面经/2020-面试', '2020年面试总结'],
-                    ]
+                    ],
                 },
             ],
             '/100day/': [
@@ -274,14 +274,14 @@ module.exports = {
                 {
                     title: '文章',
                     collapsable: true,
-                    children: articles100List
+                    children: articles100List,
                 },
                 {
                     title: '算法题',
                     collapsable: true,
-                    children: algorithm100List
+                    children: algorithm100List,
                 },
             ],
-        }
-    }
-}
+        },
+    },
+};

@@ -44,9 +44,14 @@
 
 ---
 - Day31：[Web安全之CSRF](../interview/HTTP/Web安全之CSRF.md)
+- Day32：[HTTPS是如何保证安全的]()
+- Day33：[JavaScript代码是如何被执行的]()
+- Day34：[V8内存管理及垃圾回收机制]()
+- Day35：[深入理解JavaScript执行上下文]()
+- Day36：[[深入理解JavaScript作用域]()
+- Day37：[深入理解JavaScript闭包之什么是闭包]()
 - 同源策略及跨域的几种方法
 - TCP和UDP
-- HTTPS
 
 #### 算法题
 - [买卖股票的最佳时机](./算法题/买卖股票的最佳时机.md)
@@ -90,4 +95,5 @@
 - Day31：[打家劫舍II](../algorithm/动态规划/打家劫舍II.md)
 - Day33: [打家劫舍III](../algorithm/动态规划/打家劫舍III.md)
 - Day35: [二叉搜索树的最近公共祖先](../algorithm/树/二叉搜索树的最近公共祖先.md)
-- Day35: 买卖股票的最佳时机III
+- Day35: [三数之和]()
+- Day36: [更接近的三数之和]()
