@@ -103,12 +103,12 @@ module.exports = {
                 text: '算法',
                 link: '/algorithm/',
             },
-            { text: '手写代码', link: '/jsCode/' },
-            { text: '面试题', link: '/interview/' },
-            {
-                text: '100天',
-                link: '/100day/',
-            },
+            { text: '编程题', link: '/jsCode/' },
+            { text: '前端相关', link: '/interview/' },
+            // {
+            //     text: '100天',
+            //     link: '/100day/',
+            // },
             { text: 'Github', link: 'https://github.com/funnycoderstar/blog' },
         ],
         sidebar: {
@@ -179,6 +179,7 @@ module.exports = {
                 ['/jsCode/实现一个vue自定义指令-懒加载', '实现一个vue自定义指令-懒加载'],
                 ['/jsCode/实现一个轮播图', '实现一个轮播图'],
                 ['/jsCode/放大镜效果', '放大镜效果'],
+                ['/jsCode/LazyMan', '实现一个LazyMan'],
             ],
             '/interview/': [
                 ['/interview/', '面试题专题'],
@@ -223,7 +224,7 @@ module.exports = {
                     collapsable: true,
                     children: [
                         ['/interview/HTTP/HTTP1.x、HTTP2、HTTP3', 'HTTP1.x、HTTP2、HTTP3'],
-                        ['/interview/HTTP/HTTPS', 'HTTPS'],
+                        ['/interview/HTTP/HTTS是如何保证安全的', 'HTTS是如何保证安全的'],
                         ['/interview/HTTP/三次握手，四次挥手', '三次握手，四次挥手'],
                         ['/interview/HTTP/HTTP状态码', 'HTTP状态码'],
                         ['/interview/HTTP/HTTP请求方法', 'HTTP请求方法'],
