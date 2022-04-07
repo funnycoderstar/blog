@@ -90,6 +90,7 @@ module.exports = {
     base: '/blog/',
     title: '前端学习总结',
     description: '前端学习总结',
+    // theme: 'vuepress-theme-lemon',
     head: [['link', { rel: 'icon', href: 'https://cdn.wangyaxing.cn/icon-128x128.png' }]],
     themeConfig: {
         sidebarDepth: 2,
@@ -180,9 +181,10 @@ module.exports = {
                 ['/jsCode/实现一个轮播图', '实现一个轮播图'],
                 ['/jsCode/放大镜效果', '放大镜效果'],
                 ['/jsCode/LazyMan', '实现一个LazyMan'],
+                ['/jsCode/发布-订阅模式的实现', '发布-订阅模式的实现'],
             ],
             '/interview/': [
-                ['/interview/', '面试题专题'],
+                ['/interview/', '前端相关'],
                 {
                     title: 'CSS',
                     collapsable: true,
@@ -261,14 +263,14 @@ module.exports = {
                         ['/interview/笔试题/6', '笔试题4'],
                     ],
                 },
-                {
-                    title: '面经分享',
-                    collapsable: true,
-                    children: [
-                        ['/interview/面经/2017', '2017年面试总结'],
-                        ['/interview/面经/2020-面试', '2020年面试总结'],
-                    ],
-                },
+                // {
+                //     title: '面经分享',
+                //     collapsable: true,
+                //     children: [
+                //         ['/interview/面经/2017', '2017年面试总结'],
+                //         ['/interview/面经/2020-面试', '2020年面试总结'],
+                //     ],
+                // },
             ],
             '/100day/': [
                 ['/100day/', '100天计划专题'],
