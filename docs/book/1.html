@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>webComponent测试</title>
+    </head>
+    <body>
+        <template id="myComponnnet">
+            <style>
+                div {
+                    color: red;
+                }
+            </style>
+            <div>
+                Web Component 的内容
+            </div>
+            <script>
+                function foo() {
+                    console.log('foo');
+                }
+            </script>
+        </template>
+        <script>
+            class MyComponent extends HTMLElement {
+                constructor() {
+                    super();
+                    // 获取组件模板
+                    const content = document.getElementById('myComponnnet').content;
+                    // 创造影子DOM
+                    const shadowDOM = this.attachShadow({ mode: 'open' });
+                    // 将模板添加到影子DOM上
+                    shadowDOM.appendChild(content.cloneNode(true));
+                }
+            }
+            customElements.define('my-component', MyComponent);
+        </script>
+        <div>
+            测试自定义模板
+            <my-component></my-component>
+        </div>
+        <script>
+            var a = 2;
+            function add(b, c) {
+                console.trace();
+                return b + c;
+            }
+            function addAll(b, c) {
+                var d = 10;
+                result = add(b, c);
+                return a + result + d;
+            }
+            addAll(3, 6);
+        </script>
+    </body>
+</html>

@@ -1,5 +1,4 @@
-
-JavaScript实现leetcode213.  打家劫舍 II
+JavaScript 实现 leetcode213. 打家劫舍 II
 
 ## 题目描述
 
@@ -7,14 +6,17 @@ JavaScript实现leetcode213.  打家劫舍 II
 
 给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，能够偷窃到的最高金额。
 
-示例 1:
+示例  1:
+
 ```js
 输入: [2,3,2]
 输出: 3
 解释: 你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。
 
 ```
+
 示例 2:
+
 ```js
 输入: [1,2,3,1]
 输出: 4
@@ -22,6 +24,7 @@ JavaScript实现leetcode213.  打家劫舍 II
      偷窃到的最高金额 = 1 + 3 = 4 。
 
 ```
+
 ## 解题思路
 
 使用动态规划解答。
@@ -35,24 +38,24 @@ JavaScript实现leetcode213.  打家劫舍 II
  * @return {number}
  */
 var rob = function(nums) {
-    if(nums.length === 0) {
-        return 0
+    if (nums.length === 0) {
+        return 0;
     }
-    if(nums.length === 1) {
-        return nums[0]
+    if (nums.length === 1) {
+        return nums[0];
     }
     var rob1 = function(nums) {
         const len = nums.length;
-        if(len === 0) {
+        if (len === 0) {
             return 0;
         }
-        if(len === 1) {
+        if (len === 1) {
             return nums[0];
         }
         let prevMax = nums[0];
         let currentMax = Math.max(nums[0], nums[1]);
-        for(let i = 2; i < len; i++) {
-            const temp  = currentMax;
+        for (let i = 2; i < len; i++) {
+            const temp = currentMax;
             currentMax = Math.max(currentMax, prevMax + nums[i]);
             prevMax = temp;
         }
@@ -61,3 +64,14 @@ var rob = function(nums) {
     return Math.max(rob1(nums.slice(1)), rob1(nums.slice(0, nums.length - 1)));
 };
 ```
+
+## 思路
+
+1. 确定动态转移方程
+   `dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i])`
+
+2. 确定边界：怎么处理 dp[0]和 dp[1]，
+
+-   如果只有一间房屋，则偷窃该房屋，可以得到最高金额
+-   如果只有两间房屋，两间房屋相邻，不能同时偷，只能偷其中一间，因此要选择其中高的，可以得到最高金额
+    `dp[0] = nums[0]`; `dp[1] = Math.max(nums[0], nums[1])`;
