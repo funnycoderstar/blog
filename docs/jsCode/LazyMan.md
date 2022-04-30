@@ -2,21 +2,21 @@
 
 ```js
 实现一个LazyMan，可以按照以下方式调用:
-LazyMan(“Hank”)输出:
+LazyMan("Hank")输出:
 Hi! This is Hank!
 
-LazyMan(“Hank”).sleep(10).eat(“dinner”)输出
+LazyMan("Hank").sleep(10).eat("dinner") 输出
 Hi! This is Hank!
 //等待10秒..
 Wake up after 10
 Eat dinner~
 
-LazyMan(“Hank”).eat(“dinner”).eat(“supper”)输出
+LazyMan('Hank').eat('dinner').eat('supper') 输出
 Hi This is Hank!
 Eat dinner~
 Eat supper~
 
-LazyMan(“Hank”).sleepFirst(5).eat(“supper”)输出
+LazyMan("Hank").sleepFirst(5).eat("supper")输出
 //等待5秒
 Wake up after 5
 Hi This is Hank!
@@ -51,7 +51,7 @@ class LazyMan {
         while (Date.now() - time < delay) {}
         // 为什么在setTimeout里返回this不行, 函数执行会先于setTimeout里面的函数执行
         setTimeout(() => {
-            console.log(' sleep wake up after ' + ms);
+            console.log('sleep wake up after ' + ms);
         }, 0);
 
         return this;
@@ -133,7 +133,7 @@ class _LazyMan {
         });
         return this.next();
     }
-    beforSleep(time) {
+    beforeSleep(time) {
         // unshift插入到事件的第一个
         this.taskQueue.unshift(() => this.sleepPromise(time));
         return this.next();
