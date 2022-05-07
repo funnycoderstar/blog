@@ -8,6 +8,7 @@ function GeneratorMenu(pathPrefix, pathnameList) {
     }
     return result;
 }
+const SortList = GeneratorMenu('/algorithm/排序/', ['冒泡排序', '快速排序', '归并排序', '堆排序']);
 
 const linkList = GeneratorMenu('/algorithm/链表/', [
     '合并两个有序链表',
@@ -119,6 +120,11 @@ module.exports = {
             '/algorithm/': [
                 ['/algorithm/', '算法专题'],
                 {
+                    title: '排序',
+                    collapsable: true,
+                    children: SortList,
+                },
+                {
                     title: '树',
                     collapsable: true,
                     children: TreeList,
@@ -180,6 +186,8 @@ module.exports = {
                         ['/jsCode/setTimeout实现setInterval', 'setTimeout实现setInterval'],
                         ['/jsCode/发布-订阅模式的实现', '实现一个 EventEmitter'],
                     ],
+                },
+                {
                     title: '功能函数实现',
                     collapsable: true,
                     children: [
@@ -190,6 +198,8 @@ module.exports = {
                         ['/jsCode/数组乱序', '数组乱序'],
                         ['/jsCode/函数柯里化', '函数柯里化'],
                     ],
+                },
+                {
                     title: 'Promise 异步相关',
                     collapsable: true,
                     children: [
@@ -197,6 +207,8 @@ module.exports = {
                         ['/jsCode/实现一个repeat方法', '实现一个repeat方法'],
                         ['/jsCode/LazyMan', '实现一个LazyMan'],
                     ],
+                },
+                {
                     title: '功能实现',
                     collapsable: true,
                     children: [
@@ -281,10 +293,12 @@ module.exports = {
                         // ['/interview/笔试题/4', '笔试题4'],
                         // ['/interview/笔试题/5', '笔试题5'],
                         // ['/interview/笔试题/6', '笔试题6'],
-                        ['/interview/笔试题/3', '代码输出题1'],
-                        ['/interview/笔试题/4', '代码输出题2'],
-                        ['/interview/笔试题/5', '代码输出题3'],
-                        ['/interview/笔试题/6', '代码输出题4'],
+                        ['/interview/笔试题/1', '代码输出题1'],
+                        ['/interview/笔试题/2', '代码输出题2'],
+                        ['/interview/笔试题/3', '代码输出题3'],
+                        ['/interview/笔试题/4', '代码输出题4'],
+                        ['/interview/笔试题/5', '代码输出题5'],
+                        ['/interview/笔试题/6', '代码输出题6'],
                     ],
                 },
                 // {

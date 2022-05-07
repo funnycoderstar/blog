@@ -71,12 +71,12 @@
 
 ### 推荐好的书籍和博客
 
--   [fucking-algorithm](https://labuladong.gitbook.io/algo/)
 -   [LeetCodeAnimation](https://github.com/MisterBooo/LeetCodeAnimation)
 -   [labuladong 的算法小抄](https://labuladong.github.io/algo/)
--   学习 JavaScript 数据结构与算法（第 2 版)
--   算法图解
--   剑指 offer
+-   [宫水三叶的刷题日记](https://github.com/SharingSource/LogicStack-LeetCode)
+-   《学习 JavaScript 数据结构与算法（第 2 版)》
+-   《算法图解》
+-   《剑指 offer》
 
 ### 声明
 
