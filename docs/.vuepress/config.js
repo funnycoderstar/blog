@@ -281,8 +281,8 @@ module.exports = {
                     children: [
                         ['/interview/Webpack/webpack的loader和plugin', 'webpack的loader和plugin'],
                         ['/interview/Webpack/webpack热更新原理', 'webpack热更新原理'],
-                        ['/interview/Webpack/优化构建速度', '优化构建速度'],
-                        ['/interview/Webpack/优化代码体积', '优化代码体积'],
+                        ['/interview/Webpack/优化webpack构建速度', '优化webpack构建速度'],
+                        ['/interview/Webpack/优化webpack代码体积', '优化webpack代码体积'],
                     ],
                 },
                 {
