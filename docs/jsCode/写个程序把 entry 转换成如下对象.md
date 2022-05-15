@@ -41,7 +41,7 @@ function flatObj(obj, parentKey = '', res = {}) {
 }
 ```
 
-### 迭代
+### 迭代 + 递归
 
 -   分步骤思考
 -   1. 如果 entry[prop] 的值不是对象，则直接给 result 赋值
@@ -50,29 +50,22 @@ function flatObj(obj, parentKey = '', res = {}) {
 怎么递归的拼接好 key:将 obj 作为参数传入，把上一个的 key 和这一次的拼接好
 
 ```js
-function isObject(value) {
-    return typeof value === 'object' && value !== null;
-}
-function parse(obj, entry, keyString) {
-    for (let [key, value] of Object.entries(entry)) {
-        let curkeyString = keyString + '.' + key;
-        if (isObject(value)) {
-            parse(obj, value, curkeyString);
-        } else {
-            obj[curkeyString] = value;
+function setValue(obj, parentKey, objValue) {
+    if (typeof objValue === 'object' && objValue !== null) {
+        for (let [key, value] of Object.entries(objValue)) {
+            let curKey = objKey + '.' + key;
+            setValue(obj, curKey, value);
         }
+    } else {
+        obj[parentKey] = objValue;
     }
 }
 function convert(entry) {
-    let resultObj = {};
-    for (let prop in entry) {
-        if (isObject(entry[prop])) {
-            parse(resultObj, entry[prop], prop);
-        } else {
-            resultObj[prop] = entry[prop];
-        }
+    let obj = {};
+    for (let [key, value] of Object.entries(entry)) {
+        setValue(obj, key, value);
     }
-    return resultObj;
+    return obj;
 }
 ```
 
@@ -108,53 +101,38 @@ var output = {
 
 迭代：
 
-解法一：
-
 ```js
-function setValue(obj, keys, value) {
+var entry = {
+    'a.b.c.dd': 'abcdd',
+    'a.d.xx': 'adxx',
+    'a.e': 'ae',
+};
+
+function parse(obj, keys, value) {
+    // 利用它是引用类型，temp值修改，obj的值也会修改
+    //  储存对象最深属性的引用地址
+    let temp = obj;
     for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        // 判断是否为最后一个值
-        if (i !== keys.length - 1) {
-            // 不是最后一个值，判断obj[key]为空时，赋值{}
-            obj[key] = obj[key] || {};
+        let key = keys[i];
+        // 如果是最后一个key，则直接赋值
+        if (i === keys.length - 1) {
+            temp[key] = value;
         } else {
-            obj[key] = value;
+            // 不是最后一个则需要递归，将temp[key]赋值为 temp
+            // 利用对象为地址引用原理，进行增加元素。
+            temp[key] = temp[key] || {};
+            temp = temp[key];
         }
-        // 将obj[key]赋值给obj
-        obj = obj[key];
     }
 }
 function convert(entry) {
-    let result = {};
-    for (let key of Object.keys(entry)) {
-        const keyList = key.split('.');
-        setValue(result, keyList, entry[key]);
-    }
-    return result;
-}
-```
-
-解法二
-
-```js
-function convert(entryObj) {
-    const result = {};
-    for (let key in entryObj) {
+    let obj = {};
+    for (let [key, value] of Object.entries(entry)) {
         // 对象中的key含有点的，就是对象嵌套，使用 split分隔为数组，数组的最后一个下标对应的就是元素就是 一个key的值
-        const keyMap = key.split('.');
-        // 储存对象最深属性的引用地址
-        let temp = result;
-        for (let i = 0; i < keyMap.length; i++) {
-            if (!temp[keyMap[i]]) {
-                // 如果是最后一个直接就是 value；
-                const curValue = i === keyMap.length - 1 ? entryObj[key] : {};
-                temp[keyMap[i]] = curValue;
-            }
-            // 利用对象为地址引用原理，进行增加元素。
-            temp = temp[keyMap[i]];
-        }
+        let keys = key.split('.');
+        parse(obj, keys, value);
     }
-    return result;
+    return obj;
 }
+console.log(JSON.stringify(convert(entry)));
 ```
