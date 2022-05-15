@@ -74,7 +74,9 @@
 -   [LeetCodeAnimation](https://github.com/MisterBooo/LeetCodeAnimation)
 -   [labuladong 的算法小抄](https://labuladong.github.io/algo/)
 -   [宫水三叶的刷题日记](https://github.com/SharingSource/LogicStack-LeetCode)
--   《学习 JavaScript 数据结构与算法（第 2 版)》
+-   [负雪明烛-leetcode 题解](https://fuxuemingzhu.cn/)
+-   《学习 JavaScript 数据结构与算法（第 3 版)》
+-   [《学习 JavaScript 数据结构与算法》的代码](https://github.com/loiane/javascript-datastructures-algorithms)
 -   《算法图解》
 -   《剑指 offer》
 
