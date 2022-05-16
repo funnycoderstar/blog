@@ -111,6 +111,7 @@ class _LazyMan {
     // 每次调用时清楚timer，上一次设置的执行taskQueue就不会运行。
     // 重新设置timer,会在下一次调用完后进入执行。
     // 当所有调用结束后，就会顺利执行taskQueue队列里的事件
+    // 因为要收集好所有任务才开始执行，所以我们要用 setTimeout 构造一个异步的宏任务，确保任务的执行在同步代码后执行。
     next() {
         clearTimeout(this.timer);
         this.timer = setTimeout(async () => {
@@ -160,7 +161,28 @@ function LazyMan(name) {
 
 考察知识点：闭包，事件轮询机制，链式调用，队列
 
+从题目可以看出：
+
+1. 同步的代码调用，但是是异步的结果输出。
+2. 没有结束时刻，怎么知道调用哪个函数的时候应该输出
+
+### 思路分析
+
+1. LazyMan(“Hank”)调用，而不是 new LazyMan(“Hank”)创建 => 工厂方法返回 new 对象
+2. 链式调用实现 => 每次调用返回 this
+3. sleep 需要等待 10s => setTimeout 实现 sleep
+4. setTimeout 会放到事件列表中排队，继续执行后面的代码，但是题目中 sleep 需要阻塞后续操作。 => 考虑将 sleep 封装成 promise，使用 async/await 等待 sleep，实现阻塞。
+5. sleepFirst 每次在最开始执行，考虑将 sleepFirst 插入到事件第一个执行。
+6. 不到最后一刻，是不知道调用顺序是什么的，所以需要先是使用一个队列把时间收集起来，最后再统一执行
+
+
+    因此，首先我们需要 taskQueue 记录事件列表，直到调用完成后再执行 taskQueue 里面的事件。怎么实现调用完成后才开始执行 taskQueue 的事件呢？
+    答案：setTimeout 机制。setTimeout(function(){xxx},0)不是立马执行，这是因为 js 是单线程的，有一个事件队列机制，setTimeout 和 setInterval 的回调会插入到延迟时间塞入事件队列中，排队执行。
+
 ### 参考
 
 -   [如何实现一个 LazyMan?](https://zhuanlan.zhihu.com/p/22387417)
 -   [LazyMan 的 ES6 实现](https://segmentfault.com/a/1190000022958490)
+-   [多种方式实现 LazyMan](https://xie.infoq.cn/article/818cefbaf4ec318dda0e8eb2a)
+-   [编程题：实现一个 LazyMan 方法](https://developer.51cto.com/article/708855.html)
+-   [字节跳动面试：实现一个 LazyMan 函数](https://blog.csdn.net/qq_39261142/article/details/110425286)
