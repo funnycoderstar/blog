@@ -28,14 +28,12 @@ this is my blog
 
 ## 你可以在以下地方找到我
 
--   [aboutMe](http://wangyaxing.cn/)
+-   [aboutMe](http://ionestar.cn/)
 -   [github](https://github.com/funnycoderstar)
 -   [掘金](https://juejin.im/user/58c6a15544d9040068046025/activities)
 -   [segmentfault](https://segmentfault.com/u/funnycoderstar)
 -   [简书](https://www.jianshu.com/u/92fec6da2d1a)
 -   微信公众号: 牧码的星星
-
-![牧码的星星](https://cdn.suisuijiang.com/ImageMessage/5adad39555703565e79040fa_1583655092168.png)
 
 ## 100 天前端进阶计划
 

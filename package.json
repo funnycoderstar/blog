@@ -5,6 +5,7 @@
   },
   "devDependencies": {
     "vuepress": "^1.4.1",
+    "vuepress-plugin-autobar": "boboidream/vuepress-bar",
     "vuepress-theme-lemon": "^1.0.0"
   }
 }

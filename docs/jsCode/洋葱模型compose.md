@@ -86,6 +86,45 @@ app.compose = function() {
 };
 ```
 
+## 实现三
+
+```js
+const app = {
+    _middlewares: [],
+    use(fn) {
+        this._middlewares.push(fn);
+    },
+    compose() {
+        let dispatch = (index) => {
+            console.log('index', index, this._middlewares);
+            if (index === this._middlewares.length) {
+                return Promise.resolve();
+            }
+            const middle = this._middlewares[index];
+            return Promise.resolve(middle(() => dispatch(index + 1)));
+        };
+        dispatch(0);
+    },
+    run() {
+        this.compose();
+    },
+};
+app.use((next) => {
+    console.log(1);
+    next();
+    console.log(2);
+});
+app.use((next) => {
+    console.log(3);
+    next();
+    console.log(4);
+});
+
+app.run();
+```
+
+`compose`函数 中将 `() => dispatch(index + 1)` 作为 函数的参数 next 函数传进入
+
 ## 参考
 
 -   [Koa 洋葱模型原理分析](https://lq782655835.github.io/blogs/node/koa-compose-modal.html)

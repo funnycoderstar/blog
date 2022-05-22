@@ -12,7 +12,6 @@ const SortList = GeneratorMenu('/algorithm/排序/', ['冒泡排序', '快速排
 
 const linkList = GeneratorMenu('/algorithm/链表/', [
     '合并两个有序链表',
-    '反转链表',
     '回文链表',
     '倒数第K个节点',
     '找出链表的中间节点',
@@ -94,8 +93,9 @@ module.exports = {
     base: '/blog/',
     title: '前端学习总结',
     description: '前端学习总结',
+    // plugins: ['autobar'],
     // theme: 'vuepress-theme-lemon',
-    head: [['link', { rel: 'icon', href: 'https://cdn.wangyaxing.cn/icon-128x128.png' }]],
+    head: [['link', { rel: 'icon', href: 'https://cdn.ionestar.cn/icon-128x128.png' }]],
     themeConfig: {
         sidebarDepth: 2,
         lastUpdated: 'Last Updated',
@@ -132,12 +132,46 @@ module.exports = {
                 {
                     title: '链表',
                     collapsable: true,
-                    children: linkList,
+                    children: [
+                        ...linkList,
+                        ['/algorithm/链表/反转链表/反转链表', '反转链表'],
+                        ['/algorithm/链表/反转链表/92. 反转链表 II', '92. 反转链表 II'],
+                        ['/algorithm/链表/反转链表/25. K 个一组翻转链表', '25. K 个一组翻转链表'],
+                    ],
+                },
+                {
+                    title: '字符串',
+                    collapsable: true,
+                    children: [['/algorithm/字符串/反转字符串', '反转字符串']],
                 },
                 {
                     title: '数组',
                     collapsable: true,
                     children: ArrayList,
+                },
+                {
+                    title: '优先队列',
+                    collapsable: true,
+                    children: [
+                        [
+                            '/algorithm/优先队列/703. 数据流中的第 K 大元素',
+                            '703. 数据流中的第 K 大元素',
+                        ],
+                        ['/algorithm/优先队列/滑动窗口的最大值', '滑动窗口的最大值'],
+                        ['/algorithm/优先队列/TopK', 'TopK'],
+                    ],
+                },
+                {
+                    title: '双指针',
+                    collapsable: true,
+                    children: [
+                        [
+                            '/algorithm/优先队列/703. 数据流中的第 K 大元素',
+                            '703. 数据流中的第 K 大元素',
+                        ],
+                        ['/algorithm/优先队列/滑动窗口的最大值', '滑动窗口的最大值'],
+                        ['/algorithm/优先队列/TopK', 'TopK'],
+                    ],
                 },
                 {
                     title: '数学',
@@ -232,6 +266,7 @@ module.exports = {
                         ['/jsCode/实现一个轮播图', '实现一个轮播图'],
                         ['/jsCode/放大镜效果', '放大镜效果'],
                         ['/jsCode/沙箱', '实现一个沙箱'],
+                        ['/jsCode/模版渲染', '模版渲染'],
                     ],
                 },
             ],
