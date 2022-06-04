@@ -78,6 +78,7 @@
 -   《学习 JavaScript 数据结构与算法（第 3 版)》
 -   [《学习 JavaScript 数据结构与算法》的代码](https://github.com/loiane/javascript-datastructures-algorithms)
 -   [codetop: 汇总互联网大厂面试的高频考题](https://github.com/afatcoder/LeetcodeTop)
+-   [图解算法数据结构](https://github.com/krahets/LeetCode-Book)
 -   《算法图解》
 -   《剑指 offer》
 

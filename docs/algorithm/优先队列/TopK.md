@@ -4,14 +4,63 @@
 -   [215. 数组中的第 K 个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
 -   [23. 合并 K 个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
 -   [703. 数据流中的第 K 大元素](https://leetcode.cn/problems/kth-largest-element-in-a-stream/)
--   [中位数]
+-   [295. 数据流的中位数](https://leetcode.cn/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/)
 
 ### 最小的 k 个数
 
 构建最小堆，个数为 k，每次取堆顶，然后再堆化
 怎么控制个数为 K 呢
 
-### 数组中的第 K 个最大元素
+```js
+/**
+ * @param {number[]} arr
+ * @param {number} k
+ * @return {number[]}
+ */
+var getLeastNumbers = function(arr, k) {
+    function swap(array, i, j) {
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    // 对于节点 i 做 heapify
+    function heapify(array, heapSize, i) {
+        let left = 2 * i + 1;
+        let right = 2 * i + 2;
+        let minIndex = i;
+        if (left < heapSize && array[left] > array[minIndex]) {
+            minIndex = left;
+        }
+        if (right < heapSize && array[right] > array[minIndex]) {
+            minIndex = right;
+        }
+        if (minIndex !== i) {
+            swap(array, minIndex, i);
+            heapify(array, heapSize, minIndex);
+        }
+    }
+    function buildMaxHeap(array, heapSize) {
+        let lastIndex = heapSize - 1;
+        let parent = Math.floor((lastIndex - 1) / 2);
+        for (let i = parent; i >= 0; i--) {
+            heapify(array, heapSize, i);
+        }
+    }
+
+    // 构建大小为k的最大堆
+    let heap = arr.slice(0, k);
+    buildMaxHeap(heap, k);
+    // 和堆排序不同的点
+    for (let i = k; i < arr.length; i++) {
+        if (arr[i] < heap[0]) {
+            // 替换并堆化
+            heap[0] = arr[i];
+            heapify(heap, k, 0);
+        }
+    }
+    return heap;
+};
+```
+
+### 215. 数组中的第 K 个最大元素
 
 构建最小堆，个数为 K，堆顶就是结果。
 数组大小为 n, 怎么构建个数为 K 的最小堆呢
@@ -174,14 +223,3 @@ var findKthLargest = function(nums, k) {
     return nums[0];
 };
 ```
-
-## 703. 数据流中的第 K 大元素
-
-思路一：排序
-每次都进行排序，获取第 K 大的元素
-思路二：优先队列，使用小顶堆
-
-```js
-```
-
-> 面试题频次：「数据流中的 TopK」亚马逊面试遇到过的真题, 实现堆算法在微软面试遇到的真题，TopK 算法在面试中常问。

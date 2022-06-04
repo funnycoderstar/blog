@@ -71,6 +71,9 @@ const ArrayList = GeneratorMenu('/algorithm/数组/', [
     '合并区间',
     '区间列表的交集',
     '删除被覆盖区间',
+    '按奇偶排序数组 II',
+    '分割数组为连续子序列',
+    '两句话中的不常见单词',
 ]);
 const TreeList = GeneratorMenu('/algorithm/树/', [
     '树的遍历',
