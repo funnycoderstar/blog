@@ -130,7 +130,7 @@ module.exports = {
                 {
                     title: '树',
                     collapsable: true,
-                    children: TreeList,
+                    children: [...TreeList],
                 },
                 {
                     title: '链表',
@@ -183,8 +183,10 @@ module.exports = {
                         ['/algorithm/数学/计算质数', '计算质数'],
                         ['/algorithm/数学/求众数', '求众数'],
                         ['/algorithm/数学/中位数', '中位数'],
+                        ['/algorithm/数学/丑数', '丑数'],
                         ['/algorithm/数学/只出现一次的数字', '只出现一次的数字'],
                         ['/algorithm/数学/有效的三角形个数', '有效的三角形个数'],
+                        ['/algorithm/数学/进制转换', '进制转换'],
                     ],
                 },
                 {
