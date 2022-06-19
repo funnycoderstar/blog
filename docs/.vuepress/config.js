@@ -82,13 +82,9 @@ const TreeList = GeneratorMenu('/algorithm/树/', [
     '对称二叉树',
     '翻转二叉树',
     '另一个树的子树',
-    '验证二叉搜索树',
     '二叉树的最大深度',
     '二叉树的最小深度',
     '平衡二叉树',
-    '将有序数组转换为二叉搜索树',
-    '二叉搜索树迭代器',
-    '二叉搜索树的最近公共祖先',
     '二叉树的最近公共祖先',
 ]);
 
@@ -130,7 +126,14 @@ module.exports = {
                 {
                     title: '树',
                     collapsable: true,
-                    children: [...TreeList],
+                    children: [
+                        ...TreeList,
+                        {
+                            title: '二叉搜索树',
+                            collapsable: true,
+                            children: [[]],
+                        },
+                    ],
                 },
                 {
                     title: '链表',
@@ -153,6 +156,14 @@ module.exports = {
                     children: ArrayList,
                 },
                 {
+                    title: '回溯',
+                    collapsable: true,
+                },
+                {
+                    title: '二分查找',
+                    collapsable: true,
+                },
+                {
                     title: '优先队列',
                     collapsable: true,
                     children: [
@@ -165,9 +176,28 @@ module.exports = {
                     ],
                 },
                 {
+                    title: '栈和队列',
+                    collapsable: true,
+                    children: [
+                        ['/algorithm/栈和队列/155.最小栈', '155.最小栈'],
+                        ['/algorithm/栈和队列/225.用队列实现栈', '225.用队列实现栈'],
+                        ['/algorithm/栈和队列/232. 用栈实现队列', '232. 用栈实现队列'],
+                        ['/algorithm/栈和队列/单调栈', '单调栈'],
+                        ['/algorithm/栈和队列/计算器', '计算器'],
+                    ],
+                },
+                {
                     title: '双指针',
                     collapsable: true,
                     children: [
+                        {
+                            title: '快慢指针',
+                            collapsable: true,
+                        },
+                        {
+                            title: '滑动窗口',
+                            collapsable: true,
+                        },
                         [
                             '/algorithm/优先队列/703. 数据流中的第 K 大元素',
                             '703. 数据流中的第 K 大元素',
@@ -245,7 +275,6 @@ module.exports = {
                         ['/jsCode/浅拷贝和深拷贝', '浅拷贝和深拷贝'],
                         ['/jsCode/数组乱序', '数组乱序'],
                         ['/jsCode/函数柯里化', '函数柯里化'],
-                        ['/jsCode/写个程序把 entry 转换成如下对象', '对象数据结构转换'],
                         ['/jsCode/一维数组转树形结构', '一维数组转树形结构'],
                         [
                             '/jsCode/写个程序把 entry 转换成如下对象',

@@ -105,13 +105,17 @@ class _LazyMan {
     constructor(name) {
         this.taskQueue = [];
         this.name = name;
+        // 重点
         this.timer = null;
         this.sayHi();
     }
-    // 每次调用时清楚timer，上一次设置的执行taskQueue就不会运行。
-    // 重新设置timer,会在下一次调用完后进入执行。
-    // 当所有调用结束后，就会顺利执行taskQueue队列里的事件
-    // 因为要收集好所有任务才开始执行，所以我们要用 setTimeout 构造一个异步的宏任务，确保任务的执行在同步代码后执行。
+    /**
+     * 重点：
+     * 每次调用时清除timer，上一次设置的执行taskQueue就不会运行。
+     * 重新设置timer,会在下一次调用完后进入执行。
+     * 当所有调用结束后，就会顺利执行taskQueue队列里的事件
+     * 因为要收集好所有任务才开始执行，所以我们要用 setTimeout 构造一个异步的宏任务，确保任务的执行在同步代码后执行。
+     */
     next() {
         clearTimeout(this.timer);
         this.timer = setTimeout(async () => {
