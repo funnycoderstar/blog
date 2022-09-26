@@ -77,6 +77,8 @@ const ArrayList = GeneratorMenu('/algorithm/数组/', [
 ]);
 const TreeList = GeneratorMenu('/algorithm/树/', [
     '树的遍历',
+    '二叉树的层序遍历',
+    '二叉树的层序遍历',
     '路径总和',
     '相同的树',
     '对称二叉树',

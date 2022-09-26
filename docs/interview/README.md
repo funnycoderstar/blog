@@ -82,3 +82,7 @@
 -   [看完跳槽少说涨 5 K，前端面试从准备到谈薪完全指南（近万字精华）](https://juejin.im/post/5dfef50751882512444027eb)
 -   [前端该如何准备数据结构和算法？](https://juejin.im/post/5d5b307b5188253da24d3cd1)
 -   [在阿里我是如何当面试官的（持续更新）](https://juejin.im/post/5e6ebfa86fb9a07ca714d0ec)
+
+### 资料文档分享
+
+-   [Daily-Question](https://github.com/shfshanyue/Daily-Question)，对应[网站](https://q.shanyue.tech/roadmap/code.html#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C)
