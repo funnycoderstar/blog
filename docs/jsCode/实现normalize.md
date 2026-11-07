@@ -20,3 +20,4 @@ function normalize(str) {
 }
 console.log(normalize('[abc[bcd[def]]]'));
 ```
+

@@ -138,7 +138,7 @@ class _LazyMan {
         });
         return this.next();
     }
-    beforeSleep(time) {
+    sleepFirst(time) {
         // unshift插入到事件的第一个
         this.taskQueue.unshift(() => this.sleepPromise(time));
         return this.next();
